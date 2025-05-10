@@ -4,7 +4,8 @@ from flask_cors import CORS
 import requests
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+# More specific CORS setup - add your GitHub Pages URL
+CORS(app, origins=["https://shefali-bishnoi.github.io", "http://localhost:5000"])
 
 # Optional root route to confirm deployment
 @app.route("/", methods=["GET"])
