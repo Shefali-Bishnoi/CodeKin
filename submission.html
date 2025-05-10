@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Result</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        .result { font-size: 24px; font-weight: bold; margin: 20px 0; }
+        .accepted { color: green; }
+        .wrong { color: red; }
+        .history { margin-top: 30px; text-align: left; }
+        .loader { display: none; border: 4px solid #f3f3f3; border-top: 4px solid #3498db; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: auto; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; text-align: left; }
+    </style>
+</head>
+<body>
+    <h2>Submission Result</h2>
+    <div class="loader" id="loader"></div>
+    <div id="result" class="result"></div>
+    <button id="tryAgain" style="display: none;" onclick="retrySubmission()">Try Again</button>
+    
+    <h3>Past Submissions</h3>
+    <ul id="submissionHistory"></ul>
+    
+    <script>
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            databaseURL: "YOUR_DATABASE_URL",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+       // const userId = "currentUserId"; 
+       firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            const userId = user.uid; // Fetch the logged-in user's unique ID
+            fetchSubmissions(userId);
+        } else {
+            window.location.href = "login.html"; // Redirect to login if not authenticated
+        }
+    });
+    
+    function fetchSubmissions(userId) {
+        $("#loader").show();
+        const params = new URLSearchParams(window.location.search);
+        const submissionStatus = params.get("status");
+        const problemId = params.get("problem");
+        const submittedCode = params.get("code");
+    
+        if (submissionStatus === "accepted") {
+            $("#result").text("✅ Accepted").addClass("accepted");
+        } else {
+            $("#result").text("❌ Wrong Answer").addClass("wrong");
+            $("#tryAgain").show();
+        }
+    
+        const submissionData = { status: submissionStatus, code: submittedCode, timestamp: Date.now() };
+        database.ref("submissions/" + userId + "/" + problemId).push(submissionData);
+    
+        database.ref("submissions/" + userId + "/" + problemId).orderByChild("timestamp").limitToLast(5).once("value", snapshot => {
+            $("#loader").hide();
+            $("#submissionHistory").empty();
+            snapshot.forEach(submission => {
+                const data = submission.val();
+                const statusText = data.status === "accepted" ? "✅ Accepted" : "❌ Wrong";
+                const codeBlock = data.code ? `<pre>${data.code}</pre>` : "";
+                $("#submissionHistory").append(`<li>${statusText} - ${new Date(data.timestamp).toLocaleString()}${codeBlock}</li>`);
+            });
+        });
+    }
+    
+        
+        $(document).ready(function() {
+            $("#loader").show();
+            const params = new URLSearchParams(window.location.search);
+            const submissionStatus = params.get("status");
+            const problemId = params.get("problem");
+            const submittedCode = params.get("code");
+            
+            if (submissionStatus === "accepted") {
+                $("#result").text("✅ Accepted").addClass("accepted");
+            } else {
+                $("#result").text("❌ Wrong Answer").addClass("wrong");
+                $("#tryAgain").show();
+            }
+            
+            const submissionData = { status: submissionStatus, code: submittedCode, timestamp: Date.now() };
+            database.ref("submissions/" + userId + "/" + problemId).push(submissionData);
+            
+            database.ref("submissions/" + userId + "/" + problemId).orderByChild("timestamp").limitToLast(5).once("value", snapshot => {
+                $("#loader").hide();
+                $("#submissionHistory").empty();
+                snapshot.forEach(submission => {
+                    const data = submission.val();
+                    const statusText = data.status === "accepted" ? "✅ Accepted" : "❌ Wrong";
+                    const codeBlock = data.code ? `<pre>${data.code}</pre>` : "";
+                    $("#submissionHistory").append(`<li>${statusText} - ${new Date(data.timestamp).toLocaleString()}${codeBlock}</li>`);
+                });
+            });
+        });
+        
+        function retrySubmission() {
+            window.location.href = "problems.html";
+        }
+    </script>
+</body>
+</html>

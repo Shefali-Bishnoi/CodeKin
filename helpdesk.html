@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helpdesk - CodeKin</title>
+    <link rel="stylesheet" href="helpdesk.css">
+</head>
+<body>
+    <header>
+        <div id="navbar">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200">
+                <g class="logo-triangle">
+                    <path d="M100 160 L180 30 L20 30 Z" fill="none" stroke="#e100ff" stroke-width="4"/>
+                    <path d="M100 140 L165 40 L35 40 Z" fill="none" stroke="#e100ff" stroke-width="4" opacity="0.7"/>
+                    <path d="M100 120 L150 50 L50 50 Z" fill="none" stroke="#e100ff" stroke-width="4" opacity="0.4"/>
+                </g>
+                <text x="220" y="110" font-family="Arial Black, Arial Bold, sans-serif" font-size="100" font-weight="900" fill="#ffffff">CodeKin</text>
+            </svg>
+        </div>
+        <div class="tabs">
+            <div class="pages">
+                <a href="homepage.html" class="nav-button" id="home">Home</a>
+                <a href="problems.html" class="nav-button" id="problems">Practice</a>
+                <a href="courses.html" class="nav-button" id="courses">Courses</a>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">&#9662;</button>
+                <div class="dropdown-content">
+                    <a href="Profile.html">Profile</a>
+                    <a href="editprofile.html">Edit Profile</a>
+                    <a href="HelpDesk.html">Help Desk</a>
+                    <a href="index.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <h1>Helpdesk</h1>
+        <p>Find answers to frequently asked questions below.</p>
+
+        <!-- Account & Login Issues -->
+        <section class="faq-section">
+            <h2>🔐 Account & Login Issues</h2>
+            <div class="faq-item"><h3>How do I create an account?</h3><p>Click on "Sign Up," enter your email, set a password, and verify your account.</p></div>
+            <div class="faq-item"><h3>I forgot my password. How can I reset it?</h3><p>Click "Forgot Password" on the login page, enter your email, and follow the reset link.</p></div>
+            <div class="faq-item"><h3>How do I change my email or username?</h3><p>Go to Account Settings, update your email/username, and save the changes.</p></div>
+            <div class="faq-item"><h3>My account is locked. What should I do?</h3><p>Contact Support or wait for the temporary lock to expire.</p></div>
+        </section>
+
+        <!-- Platform Usage & Features -->
+        <section class="faq-section">
+            <h2>🖥 Platform Usage & Features</h2>
+            <div class="faq-item"><h3>How do I submit a coding challenge?</h3><p>Write your code in the editor, select a language, and click "Submit."</p></div>
+            <div class="faq-item"><h3>What programming languages are supported?</h3><p>We support Python, Java, C++, JavaScript, and more. Check the Languages section.</p></div>
+            <div class="faq-item"><h3>How do I view my submission history?</h3><p>Go to Profile > Submissions to view past attempts and results.</p></div>
+            <div class="faq-item"><h3>How can I track my progress?</h3><p>Use the Dashboard to see solved problems, ranking, and achievements.</p></div>
+            <div class="faq-item"><h3>Are there any time limits for solving problems?</h3><p>Regular challenges have no time limits, but contests do. Check contest rules.</p></div>
+        </section>
+
+        <!-- Coding Challenges & Contests -->
+        <section class="faq-section">
+            <h2>🏆 Coding Challenges & Contests</h2>
+            <div class="faq-item"><h3>How are coding problems categorized?</h3><p>Problems are categorized by difficulty (Easy, Medium, Hard) and topics (DSA, Algorithms).</p></div>
+            <div class="faq-item"><h3>Can I see solutions after submitting my code?</h3><p>Yes, once you submit a correct solution, you can view discussions and editorial solutions.</p></div>
+            <div class="faq-item"><h3>What happens if I submit the wrong solution?</h3><p>You can reattempt it with no penalties unless it's a timed contest.</p></div>
+            <div class="faq-item"><h3>How do leaderboards work?</h3><p>Leaderboards rank users based on correctness, execution time, and participation in contests.</p></div>
+            <div class="faq-item"><h3>How do I register for contests?</h3><p>Visit the Contests section and click Register before the deadline.</p></div>
+        </section>
+
+        <!-- Compiler & Code Execution Issues -->
+        <section class="faq-section">
+            <h2>⚙ Compiler & Code Execution Issues</h2>
+            <div class="faq-item"><h3>Why is my code not running?</h3><p>Check for syntax errors, missing inputs, or incorrect function definitions.</p></div>
+            <div class="faq-item"><h3>What does a runtime error mean?</h3><p>It usually indicates an invalid operation, such as division by zero or accessing out-of-bounds elements.</p></div>
+            <div class="faq-item"><h3>Why is my code exceeding the time limit?</h3><p>Your solution may not be optimized. Consider using efficient algorithms and data structures.</p></div>
+            <div class="faq-item"><h3>How do I debug my solution?</h3><p>Use print statements, check for edge cases, and test with sample inputs.</p></div>
+            <div class="faq-item"><h3>What should I do if the output differs from my expected result?</h3><p>Verify logic, test different cases, and check for integer/float precision issues.</p></div>
+        </section>
+
+        <!-- Payment & Subscription -->
+        <section class="faq-section">
+            <h2>💳 Payment & Subscription</h2>
+            <div class="faq-item"><h3>What are the available subscription plans?</h3><p>We offer Free, Pro, and Premium plans. Check the Pricing page for details.</p></div>
+            <div class="faq-item"><h3>How do I cancel my subscription?</h3><p>Go to Settings > Subscription and click Cancel Plan before renewal.</p></div>
+            <div class="faq-item"><h3>Are refunds available?</h3><p>Refunds depend on the policy. Contact support within the refund window.</p></div>
+        </section>
+
+        <!-- Community & Discussion Forums -->
+        <section class="faq-section">
+            <h2>💬 Community & Discussion Forums</h2>
+            <div class="faq-item"><h3>How can I ask a question in the discussion forum?</h3><p>Go to the Discussion tab on a problem page and post your query.</p></div>
+            <div class="faq-item"><h3>What are the rules for posting in the forum?</h3><p>Be respectful, avoid spam, and provide clear questions with code snippets if needed.</p></div>
+            <div class="faq-item"><h3>How do I report inappropriate behavior?</h3><p>Click the Report button on a comment or contact Support.</p></div>
+        </section>
+
+        <!-- Technical Support & Bug Reporting -->
+        <section class="faq-section">
+            <h2>🛠 Technical Support & Bug Reporting</h2>
+            <div class="faq-item"><h3>How do I report a bug?</h3><p>Go to Help & Support, describe the issue, and attach screenshots if possible.</p></div>
+            <div class="faq-item"><h3>The platform is not loading properly. What should I do?</h3><p>Clear your browser cache, disable extensions, or try a different browser.</p></div>
+            <div class="faq-item"><h3>How do I clear my browser cache for better performance?</h3><p>Press Ctrl + Shift + Delete, select "Cached images and files," and click "Clear."</p></div>
+        </section>
+    </main>
+</body>
+</html>

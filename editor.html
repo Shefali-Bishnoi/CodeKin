@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Case Selector</title>
+    <style>
+       
+        .container {
+            width: 500px;
+            background: #252526;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .testcase-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .testcase-header button {
+            background: #4caf50;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .testcase-header button:hover {
+            background: #45a049;
+        }
+        .cases {
+            display: flex;
+            gap: 10px;
+        }
+        .case-btn {
+            background: #333;
+            color: #bbb;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .case-btn.active {
+            background: #4caf50;
+            color: white;
+        }
+        .case-btn:hover {
+            background: #555;
+        }
+        .test-content {
+            margin-top: 20px;
+        }
+        .test-label {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .test-box {
+            width: 100%;
+            padding: 10px;
+            background: #333;
+            border-radius: 5px;
+            color: white;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="testcase-header">
+            <h3>Testcase</h3>
+            <button onclick="addTestCase()">+</button>
+        </div>
+
+        <!-- Test Cases Buttons -->
+        <div class="cases" id="cases-container"></div>
+
+        <!-- Test Case Input and Output -->
+        <div class="test-content">
+            <p class="test-label">nums =</p>
+            <div class="test-box" id="input-box"></div>
+
+            <p class="test-label">target =</p>
+            <div class="test-box" id="output-box"></div>
+        </div>
+    </div>
+
+    <script>
+        let testCases = [
+            { id: 1, inputText: "[2, 7, 11, 15]", outputText: "9" },
+            { id: 2, inputText: "[1, 2, 3, 4]", outputText: "6" },
+            { id: 3, inputText: "[5, 10, 15]", outputText: "20" }
+        ];
+
+        let activeTestCaseId = 0; 
+
+        function renderTestCases() {
+            const casesContainer = document.getElementById("cases-container");
+            casesContainer.innerHTML = "";
+
+            testCases.forEach((testCase, index) => {
+                let button = document.createElement("div");
+                button.className = `case-btn ${index === activeTestCaseId ? "active" : ""}`;
+                button.textContent = `Case ${index + 1}`;
+                button.onclick = () => selectTestCase(index);
+                casesContainer.appendChild(button);
+            });
+
+            updateTestCaseView();
+        }
+
+        function selectTestCase(index) {
+            activeTestCaseId = index;
+            renderTestCases();
+        }
+
+        function updateTestCaseView() {
+            document.getElementById("input-box").textContent = testCases[activeTestCaseId].inputText;
+            document.getElementById("output-box").textContent = testCases[activeTestCaseId].outputText;
+        }
+
+        function addTestCase() {
+            let newId = testCases.length + 1;
+            testCases.push({ id: newId, inputText: "[0, 0, 0]", outputText: "0" });
+            renderTestCases();
+        }
+
+        renderTestCases();
+    </script>
+
+</body>
+</html>

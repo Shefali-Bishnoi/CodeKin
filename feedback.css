@@ -1,0 +1,323 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary-bg: #10041d;
+    --secondary-bg: rgba(16, 4, 29, 0.85);
+    --accent-color: #b429ff;
+    --text-color: #f0f0ff;
+    --button-color: #8a2be2;
+    --button-hover: #b14aff;
+    --star-default: #6e6e9c; /* Brighter default star color */
+    --star-selected: #ffea00; /* Brighter yellow for selected stars */
+    --shadow-color: rgba(180, 41, 255, 0.35);
+    --border-glow: rgba(180, 41, 255, 0.2);
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #10041d 0%, #2d1155 70%, #3a1a68 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 60px;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+header {
+    background-color: var(--secondary-bg);
+    backdrop-filter: blur(12px);
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    border-bottom: 2px solid var(--accent-color);
+    box-shadow: 0 0 20px var(--shadow-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+#navbar {
+    height: 100%;
+    /* display: flex; */
+    align-items: center;
+    gap: 20px;
+    position: fixed;
+    margin-left: -5%;
+}
+
+#navbar svg {
+    height: 45px;
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 0 10px var(--shadow-color));
+    transition: transform 0.3s ease;
+}
+
+#navbar svg:hover {
+    transform: scale(1.05);
+}
+
+.tabs {
+    display: flex;
+    margin-left: 1%;
+    align-items: center;
+    gap: 15px;
+    position: fixed;
+    margin-left:70%;
+}
+
+.pages {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-button {
+    color: #ffffff;
+    background-color: transparent;
+    padding: 8px 15px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid rgba(225, 0, 255, 0.5);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-button:hover {
+    background-color: rgba(225, 0, 255, 0.2);
+    box-shadow: 0 0 10px rgba(225, 0, 255, 0.4);
+}
+
+.nav-button:active {
+    transform: scale(0.95);
+    background-color: #9D6CBE;
+    border-color: rgba(225, 0, 255, 0.7);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: white;
+    padding: 8px 12px;
+    font-size: 18px;
+    border: 2px solid rgba(225, 0, 255, 0.5);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dropbtn:hover {
+    background-color: rgba(225, 0, 255, 0.2);
+    box-shadow: 0 0 10px rgba(225, 0, 255, 0.4);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #2d0130;
+    min-width: 180px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    z-index: 101;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    display: block;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.dropdown-content a:hover {
+    background: linear-gradient(90deg, #e100ff, #7f00ff);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+h2 {
+    color: var(--text-color);
+    text-align: center;
+    margin: 40px 0 20px;
+    font-size: 2.2rem;
+    font-weight: 600;
+    text-shadow: 0 0 15px var(--shadow-color);
+    letter-spacing: 1px;
+}
+
+.text {
+    background-color: var(--secondary-bg);
+    color: var(--text-color);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px var(--shadow-color);
+    text-align: left;
+    width: 100%;
+    margin-bottom: 30px;
+    border: 1px solid var(--border-glow);
+    line-height: 1.7;
+    backdrop-filter: blur(5px);
+}
+
+.text p {
+    margin-bottom: 15px;
+}
+
+.red {
+    color: #ff66c4;
+    font-weight: 600;
+}
+
+.star-rating {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 30px 0;
+}
+
+.star {
+    font-size: 48px;
+    cursor: pointer;
+    color: var(--star-default);
+    transition: all 0.3s ease;
+    padding: 5px;
+    text-shadow: 0 0 8px rgba(110, 110, 156, 0.5); /* Added glow to default stars */
+}
+
+.star:hover, .star.selected {
+    color: var(--star-selected);
+    transform: scale(1.1);
+    text-shadow: 0 0 12px rgba(255, 234, 0, 0.7); /* Increased glow for selected stars */
+}
+
+.rating-value {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.sb {
+    display: inline-block;
+    padding: 14px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    background: linear-gradient(135deg, var(--button-color) 0%, #9d4edd 100%);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-top: 20px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 15px var(--shadow-color);
+}
+
+.sb:hover {
+    background: linear-gradient(135deg, var(--button-hover) 0%, #b14aff 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35), 0 0 20px var(--shadow-color);
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    .text {
+        padding: 20px;
+    }
+    
+    .star {
+        font-size: 40px;
+    }
+}
+
+#navbar {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-right: auto; /* This pushes everything else to the right */
+    padding-left: 20px; /* Add padding on the left */
+}
+
+.sb {
+    display: block; /* Change from inline-block to block */
+    margin: 20px auto; /* This centers the button horizontally */
+    padding: 14px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    background: linear-gradient(135deg, var(--button-color) 0%, #9d4edd 100%);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 15px var(--shadow-color);
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center; /* Ensure all content in the form container is centered */
+}
+
+textarea {
+    width: 100%; /* Make textarea span full width */
+    max-width: 100%; /* Prevent overflow */
+    margin-bottom: 15px; /* Add some space below the textarea */
+    padding: 10px; /* Add some internal padding */
+    background-color: transparent; /* Removed custom background */
+    color: inherit; /* Inherit text color from parent */
+    border: 1px solid var(--border-glow);
+    border-radius: 8px;
+    resize: vertical;
+    min-height: 100px;
+    font-family: inherit; /* Inherit font from parent */
+}

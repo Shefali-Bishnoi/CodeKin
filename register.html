@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <div class="register-container">
+        <h2>Register</h2>
+        <form id="register-form">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" required>
+
+            <label for="age">Age</label>
+            <input type="number" id="age" required>
+
+            <label for="gender">Gender</label>
+            <select id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="institute">Institute</label>
+            <input type="text" id="institute" required>
+
+            <label for="username">Username</label>
+            <input type="text" id="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" required>
+
+            <button type="submit" class="register-btn">Register</button>
+        </form>
+
+        <button id="resend-verification" class="hidden">Resend Verification Email</button>
+        <button id="delete-unverified" class="hidden">Delete Unverified Account</button>
+    </div>
+
+    <script type="module" src="register.js"></script>
+</body>
+</html>

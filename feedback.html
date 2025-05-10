@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Website Feedback Form</title>
+    <link rel="stylesheet" href="feedback.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+
+    <script>
+        // Your Firebase configuration (replace with your own details)
+        const firebaseConfig = {
+            apiKey: "AIzaSyCKbTqkog_EhHuDISyR8nqiI7qaSzKXdaE",
+            authDomain: "codekinuserloginregister.firebaseapp.com",
+            projectId: "codekinuserloginregister",
+            storageBucket: "codekinuserloginregister.firebasestorage.app",
+            messagingSenderId: "52673131620",
+            appId: "1:52673131620:web:5ac55b83b0809801761b71",
+            measurementId: "G-LRJR9ETR8V"
+          };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+    </script>
+</head>
+<body>
+    <!-- Your header/navigation remains unchanged -->
+
+    <h2>Feedback Form</h2>
+    <div class="text">
+        <h3>Note:</h3>
+        <p>Your opinion is valuable. Please help us improve by completing the form below in 2 minutes.</p>
+        <p class="red">* indicates required question</p>
+    </div>
+
+    <div class="text">
+        <!-- Form -->
+        <form id="feedbackForm">
+            <label for="likedMost">1. What did you like the most about the website? <span class="red">*</span></label><br><br>
+            <textarea id="likedMost" required></textarea><br><br>
+
+            <label>2. How would you rate the website design and appearance? <span class="red">*</span></label><br><br>
+            <div class="star-rating">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+            </div>
+            <div class="rating-value">Your rating: <span id="ratingValue">0</span></div>
+            <input type="hidden" id="designRating" required><br><br>
+
+            <label for="additionalFeatures">3. What additional features would you like to see on the website?</label><br><br>
+            <textarea id="additionalFeatures"></textarea><br><br>
+
+            <label for="bugs">4. Did you encounter any bugs or false content?</label><br><br>
+            <textarea id="bugs"></textarea><br><br>
+
+            <label for="experience">5. How was your overall experience? <span class="red">*</span></label><br><br>
+            <textarea id="experience" required></textarea><br><br>
+
+            <label for="suggestions">6. Any suggestions?</label><br><br>
+            <textarea id="suggestions"></textarea><br><br>
+
+            <button type="submit" class="sb">Submit Feedback</button>
+        </form>
+    </div>
+
+    <script src="feedback.js"></script>
+</body>
+</html>

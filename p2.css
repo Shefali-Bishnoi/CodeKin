@@ -1,0 +1,120 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #040404;
+    color: antiquewhite;
+}
+
+.split {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.vertical-split {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+#split-0, #split-1 {
+    width: 50%;
+    padding: 10px;
+    overflow: auto;
+}
+
+#nested-0, #nested-1 {
+    padding: 10px;
+    overflow: auto;
+}
+
+.gutter {
+    background-color: #9e9c9c;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.gutter.gutter-horizontal {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+    cursor: col-resize;
+}
+
+.gutter.gutter-vertical {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
+    cursor: row-resize;
+}
+
+.container {
+    background: #252526;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #B57EDC;
+}
+
+.code-editor {
+    width: 100%;
+    height: auto;
+}
+
+.run-btn {
+    margin-top: 10px;
+    padding: 10px 15px;
+    background: #4caf50;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.run-btn:hover {
+    background: #45a049;
+}
+
+.testcase-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.cases {
+    display: flex;
+    gap: 10px;
+}
+
+.case-btn {
+    background: #333;
+    color: #bbb;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.case-btn.active {
+    background: #4caf50;
+    color: white;
+}
+
+.case-btn:hover {
+    background: #555;
+}
+
+.test-content {
+    margin-top: 20px;
+}
+
+.test-label {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.test-box {
+    width: 100%;
+    padding: 10px;
+    background: #333;
+    border-radius: 5px;
+    color: white;
+    margin-top: 5px;
+}

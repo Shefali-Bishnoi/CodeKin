@@ -1,0 +1,142 @@
+/* Google Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #1a0b2e;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Header Styling */
+header {
+    background: linear-gradient(90deg, #250d38, #5a189a);
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 0 20px rgba(225, 0, 255, 0.3);
+    border: 1px solid rgba(225, 0, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(225, 0, 255, 0.1) 0%, transparent 70%);
+    animation: headerGlow 5s infinite alternate;
+    z-index: 1;
+}
+
+@keyframes headerGlow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-shadow: 0 0 15px rgba(225, 0, 255, 0.7);
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(to right, #ff00ff, #00ffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.mission, .team {
+    margin: 40px auto;
+    width: 80%;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #ff00ff;
+    text-shadow: 0 0 10px rgba(225, 0, 255, 0.7);
+}
+
+/* Team Section */
+.team-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.team-member {
+    background: rgba(225, 0, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    border: 1px solid rgba(225, 0, 255, 0.3);
+    box-shadow: 0 0 15px rgba(225, 0, 255, 0.2);
+}
+
+.team-member:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(225, 0, 255, 0.4);
+    background: rgba(225, 0, 255, 0.2);
+}
+
+/* Fix for FontAwesome Icon */
+.team-member i {
+    font-size: 3rem;
+    color: #e100ff;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(225, 0, 255, 0.5);
+}
+
+/* FontAwesome user icon */
+.team-member i::before {
+    content: "\f2bd"; /* Unicode for fa-user-circle */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .team-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .team-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    header {
+        width: 95%;
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    padding: 15px;
+    background: #140a1e;
+    box-shadow: 0 0 10px rgba(225, 0, 255, 0.3);
+}

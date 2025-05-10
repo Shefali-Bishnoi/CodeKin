@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CODEKIN</title>
+    <link href="problems.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header>
+        <div id="navbar">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200">
+                <g class="logo-triangle">
+                    <path d="M100 160 L180 30 L20 30 Z" fill="none" stroke="#e100ff" stroke-width="4"/>
+                    <path d="M100 140 L165 40 L35 40 Z" fill="none" stroke="#e100ff" stroke-width="4" opacity="0.7"/>
+                    <path d="M100 120 L150 50 L50 50 Z" fill="none" stroke="#e100ff" stroke-width="4" opacity="0.4"/>
+                </g>
+                <text x="220" y="110" font-family="Arial Black, Arial Bold, sans-serif" font-size="100" font-weight="900" fill="#ffffff">CodeKin</text>
+            </svg>
+        </div>
+        <div class="tabs">
+            <div class="pages">
+                <a href="homepage.html" class="nav-button">Home</a>
+                <a href="problems.html" class="nav-button">Practice</a>
+                <a href="courses.html" class="nav-button">Courses</a>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">▾</button>
+                <div class="dropdown-content">
+                    <a href="Profile.html">Profile</a>
+                    <a href="editprofile.html">Edit Profile</a>
+                    <a href="HelpDesk.html">Help Desk</a>
+                    <a href="index.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="courses">
+        <div class="box">
+            <img src="https://assets.leetcode.com/users/images/49479bba-73b3-45d2-9272-99e773d784b2_1687290663.3168745.jpeg">
+        </div>
+        <div class="box">
+            <img src="https://assets.leetcode.com/users/images/770789b0-c96b-4663-86d1-baab25534864_1669795265.8012726.png">
+        </div>
+        <div class="box">
+            <img src="https://assets.leetcode.com/users/images/49479bba-73b3-45d2-9272-99e773d784b2_1687290663.3168745.jpeg">
+        </div>
+        <div class="box">
+            <img src="https://assets.leetcode.com/users/images/770789b0-c96b-4663-86d1-baab25534864_1669795265.8012726.png">
+        </div>
+    </div>
+    <div id="content">
+        <div>
+            <h2>WANNA PRACTICE?</h2>
+        </div>
+        <div id="form">
+            <form action="/action_page.php" class="form1 form">
+                <label for="Tag">Tags:</label>
+                <select name="Tag" id="Tag">
+                    <option value="Choose">Choose</option>
+                    <option value="Array">Array</option>
+                    <option value="String">String</option>
+                    <option value="Linked List">Linked List</option>
+                    <option value="Sliding Window">Sliding Window</option>
+                    <option value="Two Pointer">Two Pointer</option>
+                    <option value="Graph">Graph</option>
+                    <option value="Tree">Tree</option>
+                    <option value="Recursion">Recursion</option>
+                    <option value="Backtracking">Backtracking</option>
+                    <option value="Dynamic Programming">Dynamic Programming</option>
+                    <option value="Stack/Queue">Stack/Queue</option>
+                    <option value="Binary Search">Binary Search</option>
+                    <option value="Trie">Trie</option>
+                </select>
+            </form>
+            <form action="/action_page.php" class="form2 form">
+                <label for="Difficulty">Difficulty</label>
+                <select name="Difficulty" id="Difficulty">
+                    <option value="Choose">Choose</option>
+                    <option value="Easy">Easy</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Hard">Hard</option>
+                </select>
+            </form>
+            <form action="/action_page.php" class="form3 form">
+                <label for="Status">Status</label>
+                <select name="Status" id="Status">
+                    <option value="Choose">Choose</option>
+                    <option value="Solved">Solved ✅</option>
+                    <option value="Attempted">Attempted 🔄</option>
+                    <option value="To-Do">To-Do⏳</option>
+                </select>
+            </form>
+            <span>
+                <span>Problem Name</span>
+                <span><input type="text" id="text" class="form"></span>
+            </span>
+        </div>
+        <div id="problems">
+            <div class="problem p0">
+                <span>STATUS</span>
+                <span>TITLE</span>
+                <span>DIFFICULTY</span>
+                <span>CATEGORY</span>
+                <span>COMPANIES</span>
+            </div>
+            <hr>
+        </div>
+        <div id="pagination">
+            <button class="button-64" id="prev-btn" disabled><span class="text">Previous</span></button>
+            <span id="page-info"></span>
+            <button class="button-64" id="next-btn"><span class="text">Next</span></button>
+        </div>
+    </div>
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="problems.js"></script>
+</body>
+</html>

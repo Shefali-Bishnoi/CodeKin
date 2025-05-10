@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+    <link rel="stylesheet" href="courses.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <header>
+        <div id="navbar">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200">
+                <g class="logo-triangle">
+                    <path d="M100 160 L180 30 L20 30 Z" fill="none" stroke="#e100ff" stroke-width="4"/>
+                    <path d="M100 140 L165 40 L35 40 Z" fill="none" stroke="#e100ff" stroke-width="4" opacity="0.7"/>
+                    <path d="M100 120 L150 50 L50 50 Z" fill="none" stroke="#e100ff" stroke-width="4" opacity="0.4"/>
+                </g>
+                <text x="220" y="110" font-family="Arial Black, Arial Bold, sans-serif" font-size="100" font-weight="900" fill="#ffffff">CodeKin</text>
+            </svg>
+        </div>
+        <div class="tabs">
+            <div class="pages">
+                <a href="homepage.html" class="nav-button" id="home">Home</a>
+                <a href="problems.html" class="nav-button" id="problems">Practice</a>
+                <a href="courses.html" class="nav-button" id="courses">Courses</a>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">&#9662;</button>
+                <div class="dropdown-content">
+                    <a href="Profile.html">Profile</a>
+                    <a href="editprofile.html">Edit Profile</a>
+                    <a href="HelpDesk.html">Help Desk</a>
+                    <a href="index.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <h1>Learning Hub</h1>
+        <p>Enhance your coding skills with structured courses, tutorials, and guided learning paths</p>
+    </div>
+
+    <div class="course-categories">
+        <button class="category-button active" data-filter="all">All Courses</button>
+        <button class="category-button" data-filter="programming">Programming</button>
+        <button class="category-button" data-filter="data-structures">Data Structures</button>
+        <button class="category-button" data-filter="algorithms">Algorithms</button>
+        <button class="category-button" data-filter="web-development">Web Development</button>
+        <button class="category-button" data-filter="machine-learning">Machine Learning</button>
+    </div>
+
+    <div class="course-container">
+        <div class="learning-path-section">
+            <div class="learning-path-header">
+                <h2 class="learning-path-title">Recommended Learning Paths</h2>
+                <a href="https://www.codechef.com/learn" class="view-all">View All</a>
+            </div>
+            
+            <div class="course-grid">
+                <div class="course-card" data-category="data-structures algorithms">
+                    <div class="course-image">
+                        <img src="https://cdn.codechef.com/images/self-learning/icons/heaps.svg" alt="DSA Path">
+                        <span class="course-badge">Most Popular</span>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Data Structures & Algorithms</h3>
+                        <p class="course-description">Master core data structures and algorithms for technical interviews and competitive programming.</p>
+                        <div class="course-meta">
+                            <div class="course-difficulty">
+                                <span class="difficulty-indicator intermediate"></span>
+                                Intermediate
+                            </div>
+                            <a href="https://www.codechef.com/learn/topic/data-structures-and-algorithms" class="course-button">Start learning</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-card" data-category="programming">
+                    <div class="course-image">
+                        <img src="https://cdn.codechef.com/images/self-learning/icons/python-beginner-v2-p2.svg" alt="Python Path">
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Python Mastery</h3>
+                        <p class="course-description">Learn Python from basics to advanced concepts including libraries and frameworks.</p>
+                        <div class="course-meta">
+                            <div class="course-difficulty">
+                                <span class="difficulty-indicator beginner"></span>
+                                Beginner
+                            </div>
+                            <a href="https://www.codechef.com/learn/topic/python" class="course-button">Start learning</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-card" data-category="web-development">
+                    <div class="course-image">
+                        <img src="https://www.creativeitinstitute.com/images/course/course_1663052056.jpg" alt="Web Dev Path">
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Full-Stack Web Development</h3>
+                        <p class="course-description">Build responsive websites and web applications with modern technologies.</p>
+                        <div class="course-meta">
+                            <div class="course-difficulty">
+                                <span class="difficulty-indicator intermediate"></span>
+                                Intermediate
+                            </div>
+                            <a href="https://www.codechef.com/learn/topic/web-development" class="course-button">Start learning</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="course-card" data-category="programming">
+                    <div class="course-image">
+                        <img src="https://cdn.codechef.com/images/self-learning/icons/cpp-beginner-v2-p2.svg" alt="C++ Path">
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">C++ Programming</h3>
+                        <p class="course-description">Learn C++ from fundamentals to advanced topics for competitive programming.</p>
+                        <div class="course-meta">
+                            <div class="course-difficulty">
+                                <span class="difficulty-indicator advanced"></span>
+                                Advanced
+                            </div>
+                            <a href="https://www.codechef.com/learn/topic/cpp" class="course-button">Start learning</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card" data-category="programming">
+                    <div class="course-image">
+                        <img src="https://cdn.codechef.com/images/self-learning/icons/c.svg" alt="C Path">
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">C Programming</h3>
+                        <p class="course-description">Learn C from fundamentals to advanced topics for strong basic concepts.</p>
+                        <div class="course-meta">
+                            <div class="course-difficulty">
+                                <span class="difficulty-indicator advanced"></span>
+                                Advanced
+                            </div>
+                            <a href="https://www.codechef.com/learn/topic/c" class="course-button">Start learning</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popular Courses Section -->
+        <div class="learning-path-section">
+            <div class="learning-path-header">
+                <h2 class="learning-path-title">Popular Courses</h2>
+                <a href="#" class="view-all">View All</a>
+            </div>
+
+            <div class="course-grid">
+                <div class="course-card" data-category="web-development">
+                    <div class="course-image">
+                        <img src="https://cdn.codechef.com/images/self-learning/icons/html.svg" alt="HTML CSS">
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">HTML & CSS Fundamentals</h3>
+                        <p class="course-description">Learn to build and style modern websites with HTML5 and CSS3.</p>
+                        <div class="course-meta">
+                            <div class="course-difficulty">
+                                <span class="difficulty-indicator beginner"></span>
+                                Beginner
+                            </div>
+                            <a href="https://www.codechef.com/learn/course/html" class="course-button">Start learning</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card" data-category="web-development">
+                    <div class="course-image">
+                        <img src="https://cdn.codechef.com/images/self-learning/icons/web-dev-js.svg" alt="JavaScript">
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">JavaScript Mastery</h3>
+                        <p class="course-description">Master JavaScript fundamentals, ES6+ features, and popular frameworks.</p>
+                        <div class="course-meta">
+                            <div class="course-difficulty">
+                                <span class="difficulty-indicator intermediate"></span>
+                                Intermediate
+                            </div>
+                            <a href="https://www.codechef.com/learn/course/javascript" class="course-button">Start learning</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card" data-category="algorithms">
+                    <div class="course-image">
+                        <img src="https://mlrit.ac.in/wp-content/uploads/2022/04/most-common-interview-questions.jpg" alt="LeetCode">
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Interview Problems</h3>
+                        <p class="course-description">Ace technical interviews with strategies for solving LeetCode problems.</p>
+                        <div class="course-meta">
+                            <div class="course-difficulty">
+                                <span class="difficulty-indicator advanced"></span>
+                                Advanced
+                            </div>
+                            <a href="https://leetcode.com/explore/featured/card/top-interview-questions-easy/" class="course-button">Start learning</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card" data-category="web-development">
+                    <div class="course-image">
+                        <img src="https://wptavern.com/wp-content/uploads/2016/09/reactjs.png" alt="React">
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">React Development</h3>
+                        <p class="course-description">Build modern, reactive user interfaces with React and related libraries.</p>
+                        <div class="course-meta">
+                            <div class="course-difficulty">
+                                <span class="difficulty-indicator intermediate"></span>
+                                Intermediate
+                            </div>
+                            <a href="https://www.scaler.com/topics/course/free-react-js-course/" class="course-button">Start learning</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Machine Learning Section -->
+        <div class="learning-path-section">
+            <div class="learning-path-header">
+                <h2 class="learning-path-title">New Releases</h2>
+                <a href="#" class="view-all">View All</a>
+            </div>
+
+            <div class="course-grid">
+                <div class="course-card" data-category="machine-learning">
+                    <div class="course-image">
+                        <img src="https://www.naukri.com/campus/career-guidance/wp-content/uploads/2024/07/what-is-machine-learning.jpg" alt="Machine Learning">
+                        <span class="course-badge">New</span>
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Intro to Machine Learning</h3>
+                        <p class="course-description">Learn the fundamentals of machine learning algorithms and applications.</p>
+                        <div class="course-meta">
+                            <div class="course-difficulty">
+                                <span class="difficulty-indicator intermediate"></span>
+                                Intermediate
+                            </div>
+                            <a href="https://leetcode.com/explore/featured/card/machine-learning-101/" class="course-button">Start learning</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filtering Script -->
+    <script>
+        $(document).ready(function () {
+            $('.category-button').click(function () {
+                var filter = $(this).data('filter');
+
+                $('.category-button').removeClass('active');
+                $(this).addClass('active');
+
+                if (filter === 'all') {
+                    $('.course-card').show();
+                } else {
+                    $('.course-card').each(function () {
+                        var categories = $(this).data('category').toLowerCase().split(' ');
+                        if (categories.includes(filter)) {
+                            $(this).show();
+                        } else {
+                            $(this).hide();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

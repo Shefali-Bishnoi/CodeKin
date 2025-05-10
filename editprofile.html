@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="editprofile.css">
+</head>
+<body>
+    <header>
+        <div id="navbar">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200">
+                <g class="logo-triangle">
+                  <path d="M100 160 L180 30 L20 30 Z" fill="none" stroke="#e100ff" stroke-width="4"/>
+                  <path d="M100 140 L165 40 L35 40 Z" fill="none" stroke="#e100ff" stroke-width="4" opacity="0.7"/>
+                  <path d="M100 120 L150 50 L50 50 Z" fill="none" stroke="#e100ff" stroke-width="4" opacity="0.4"/>
+                </g>
+                <text x="220" y="110" font-family="Arial Black, Arial Bold, sans-serif" font-size="100" font-weight="900" fill="#ffffff">CodeKin</text>
+            </svg>
+        </div>
+        <div class="tabs">
+            <div class="pages">
+                <a href="homepage.html" class="nav-button" id="home">Home</a>
+                <a href="problems.html" class="nav-button" id="problems">Practice</a>
+                <a href="courses.html" class="nav-button" id="courses">Courses</a>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">&#9662;</button>
+                <div class="dropdown-content">
+                    <a href="Profile.html">Profile</a>
+                    <a href="editprofile.html">Edit Profile</a>
+                    <a href="HelpDesk.html">Help Desk</a>
+                    <a href="index.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="edit-container">
+        <h2 class="heading-with-icon">
+            <img src="./editprofile.jpg" class="heading-icon">
+            Edit Profile
+          </h2>          
+        <form id="edit-profile-form">
+            <div class="form-group">
+                <label for="edit-username">Username:</label>
+                <input type="text" id="edit-username" disabled>
+                <button type="button" class="edit-btn" onclick="enableEdit('edit-username')">Edit</button>
+            </div>
+    
+            <div class="form-group">
+                <label for="edit-password">New Password:</label>
+                <input type="password" id="edit-password" placeholder="Enter new password" disabled>
+                <label for="confirm-password">Confirm New Password:</label>
+                <input type="password" id="confirm-password" placeholder="Confirm new password" disabled>
+                <button type="button" class="edit-btn" onclick="enableEdit('edit-password'); enableEdit('confirm-password');">Edit</button>
+            </div>
+
+            
+
+            <div class="form-group">
+                <label for="edit-fullname">Full Name:</label>
+                <input type="text" id="edit-fullname" disabled>
+                <button type="button" class="edit-btn" onclick="enableEdit('edit-fullname')">Edit</button>
+            </div>
+
+            
+            <div class="form-group">
+                <label for="edit-age">Age:</label>
+                <input type="number" id="edit-age" min="0" disabled>
+                <button type="button" class="edit-btn" onclick="enableEdit('edit-age')">Edit</button>
+            </div>
+
+            
+            <div class="form-group">
+                <label for="edit-gender">Gender:</label>
+                <div class="custom-select-wrapper">
+                    <select id="edit-gender" class="custom-select" disabled>
+                        <option value="">Select</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <button type="button" class="edit-btn" onclick="enableEdit('edit-gender')">Edit</button>
+            </div>
+            
+            <div class="form-group">
+                <label for="edit-institute">Institute Name:</label>
+                <input type="text" id="edit-institute" disabled>
+                <button type="button" class="edit-btn" onclick="enableEdit('edit-institute')">Edit</button>
+            </div>
+            
+    
+            <button type="submit" id="update-btn">Update Profile</button>
+        </form>
+    </div>
+    
+    <script type="module" src="editprofile.js"></script>
+</body>
+</html>

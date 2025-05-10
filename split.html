@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split.js Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.6.2/split.min.js"></script>
+    <style>
+        .split {
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+        }
+
+        #split-0, #split-1 {
+            width: 50%;
+            padding: 10px;
+            overflow: auto;
+            border: 1px solid #ccc;
+        }
+
+        .gutter {
+            background-color: #9e9c9c;
+            background-repeat: no-repeat;
+            background-position: 50%;
+        }
+
+        .gutter.gutter-horizontal {
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+            cursor: col-resize;
+        }
+    </style>
+</head>
+<body>
+
+<div class="split">
+    <div id="split-0">
+        <pre><code>// Your first code section here
+#include &lt;stdio.h&gt;
+
+int main() {
+    printf("Hello, World!");
+    return 0;
+}
+        </code></pre>
+    </div>
+    <div id="split-1">
+        <pre><code>// Your second code section here
+function greet() {
+    console.log("Hello, World!");
+}
+greet();
+        </code></pre>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        Split(['#split-0', '#split-1'], {
+            sizes: [50, 50], // Initial sizes
+            minSize: 100, // Minimum width of panels
+            gutterSize: 10, // Thickness of the gutter
+            cursor: 'col-resize'
+        });
+    });
+</script>
+
+</body>
+</html>

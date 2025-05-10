@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Problem</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.6.2/split.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror/theme/dracula.css">
+    <link rel="stylesheet" href="p2.css" />
+</head>
+<body>
+    <div class="split">
+        <div id="split-0">
+            <div class="container">
+                <h2 id="IDandTitle"></h2>
+                <p id="coin-points" style="color: #e100ff; font-weight: bold;"></p> 
+                <p id="statement"></p>
+            </div>
+        </div>  
+        <div id="split-1" class="vertical-split">
+            <div id="nested-0">
+                <textarea id="cppEditor" class="code-editor"></textarea>
+                <button class="run-btn" onclick="runCppCode()">Run Code</button>
+            </div>
+            <div id="nested-1">
+                <div class="container">
+                    <div class="testcase-header">
+                        <h3>Testcase</h3>
+                    </div>
+                    <div class="cases" id="cases-container"></div>
+                    <div class="test-content" id="input-container"></div>
+                    <div class="test-content">
+                        <p class="test-label">Expected Output:</p>
+                        <div id="expected-output-box" class="test-box"></div>
+                        <p class="test-label">Output:</p>
+                        <div id="result-box" class="test-box"></div>
+                        <p class="test-label">Verdict:</p>
+                        <div id="verdict-box" class="test-box"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror/lib/codemirror.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror/mode/clike/clike.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/codemirror/addon/edit/closebrackets.js"></script>
+    <script type="module" src="p2.js"></script>
+</body>
+</html>

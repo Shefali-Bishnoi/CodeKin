@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Search</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.6.2/split.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror/theme/dracula.css">
+    <style>
+        .split {
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+        }
+        .vertical-split {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        #split-0, #split-1 {
+            width: 50%;
+            padding: 10px;
+            overflow: auto;
+           
+        }
+        #nested-0, #nested-1 {
+          
+            padding: 10px;
+            overflow: auto;
+        }
+        .gutter {
+            background-color: #9e9c9c;
+            background-repeat: no-repeat;
+            background-position: 50%;
+        }
+
+        .gutter.gutter-horizontal {
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
+            cursor: col-resize;
+        }
+        .gutter.gutter-vertical {
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAFAQMAAABo7865AAAABlBMVEVHcEzMzMzyAv2sAAAAAXRSTlMAQObYZgAAABBJREFUeF5jOAMEEAIEEFwAn3kMwcB6I2AAAAAASUVORK5CYII=');
+            cursor: row-resize;
+        }
+    </style>
+
+    <title>Word Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #040404;
+            color:antiquewhite;
+        }
+        .container {
+            
+            background: rgb(6, 6, 6);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px  #B57EDC;
+        }
+        .pre{
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 10px;
+            background: #b086cf;
+            border-radius: 5px;
+        }
+        #highlighted-word {
+        background-color: #B57EDC;
+    }
+    .custom-underline{
+        text-decoration :  underline ;
+        text-decoration-color : #B57EDC;
+    }
+    </style>
+
+    
+</head>
+<style>
+ 
+    .code-editor {
+        width: auto;
+        height: auto;
+        
+       
+    }
+    .run-btn {
+        margin-top: 10px;
+        padding: 10px 15px;
+        background: #4caf50;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        cursor: pointer;
+    }
+    .run-btn:hover {
+        background: #45a049;
+    }
+</style>
+<style>
+       
+    .container {
+        width: auto;
+        background: #252526;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    .testcase-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+    
+    .cases {
+        display: flex;
+        gap: 10px;
+    }
+    .case-btn {
+        background: #333;
+        color: #bbb;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .case-btn.active {
+        background: #4caf50;
+        color: white;
+    }
+    .case-btn:hover {
+            background: #555;
+        }
+        .test-content {
+            margin-top: 20px;
+        }
+        .test-label {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .test-box {
+            width: 100%;
+            padding: 10px;
+            background: #333;
+            border-radius: 5px;
+            color: white;
+            margin-top: 5px;
+        }
+    </style>
+<body>
+    <div class="split">
+        <div id="split-0">
+    <div class="container">
+        <h2>36. Word Search</h2>
+        <p>The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.</p>
+        <h3><span class="custom-underline">Examples</span>:</h3>
+        <div>
+            <div class="pre">
+                <p><strong>Example 1:</strong></p>
+                <img src="https://assets.leetcode.com/uploads/2020/11/04/word2.jpg" style="width:60%;">
+                <p>Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"</p>
+                <p>Output: true</p>
+            </div>
+            <div class="pre">
+                <p><strong>Example 2:</strong></p>
+                <img src="https://assets.leetcode.com/uploads/2020/11/04/word-1.jpg" style="width:60%;">
+                <p>Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "SEE"</p>
+                <p>Output: true</p>
+            </div>
+            <div class="pre">
+                <p><strong>Example 3:</strong></p>
+                <img src="https://assets.leetcode.com/uploads/2020/10/15/word3.jpg" style="width:60%;">
+                <p>Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCB"</p>
+                <p>Output: false</p>
+            </div>
+        </div>
+        <h3><span class="custom-underline">Constraints</span>:</h3>
+        <div class="pre"><ul>
+            <li>m == board.length</li><li>n = board[i].length</li><li>1 <= m, n <= 6</li><li>1 <= word.length <= 15</li><li>board and word consists of only lowercase and uppercase English letters.</li>
+            </ul>
+        </div>
+    </div>
+</code></pre>
+</div>
+<div id="split-1" class="vertical-split">
+    <div id="nested-0">
+        <textarea id="cppEditor" class="code-editor"></textarea>
+        <button class="run-btn" onclick="runCppCode()">Run Code</button>
+        <a class="run-btn submit" id="submitBtn" style="text-decoration:none; cursor: not-allowed; pointer-events: none;" href="#">Submit</a>
+    
+       
+        <script src="https://cdn.jsdelivr.net/npm/codemirror/lib/codemirror.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/codemirror/mode/clike/clike.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/codemirror/addon/edit/closebrackets.js"></script>
+    
+        <script>
+         
+            var cppEditor = CodeMirror.fromTextArea(document.getElementById("cppEditor"), {
+                mode: "text/x-c++src",
+                theme: "dracula", 
+                lineNumbers: true,
+                autoCloseBrackets: true, 
+                matchBrackets: true
+            });
+    
+          
+            cppEditor.setValue(`#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "Hello, CodeMirror C++!" << endl;\n    return 0;\n}`);
+    
+            function runCppCode() {
+                alert("Executing C++ Code: \n\n" + cppEditor.getValue());
+            }
+        </script>
+    </div>
+    <div id="nested-1">
+        <div class="container">
+            <div class="testcase-header">
+                <h3>Testcase</h3>
+          
+            </div>
+    
+
+            <div class="cases" id="cases-container"></div>
+    
+           
+            <div class="test-content">
+                <p class="test-label">nums =</p>
+                <div class="test-box" id="input-box"></div>
+    
+                <p class="test-label">target =</p>
+                <div class="test-box" id="output-box"></div>
+                <p class="test-label">Output:</p>
+<div id="result-box" class="test-box"></div>
+
+            </div>
+        </div>
+        <script>
+            let testCases = [
+                { id: 1, inputText: [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], outputText: "true" },
+                { id: 2, inputText: [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], outputText: "true" },
+                { id: 3, inputText: [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], outputText: "false" }
+            ];
+    
+            let activeTestCaseId = 0; 
+    
+            function renderTestCases() {
+                const casesContainer = document.getElementById("cases-container");
+                casesContainer.innerHTML = "";
+    
+                testCases.forEach((testCase, index) => {
+                    let button = document.createElement("div");
+                    button.className = `case-btn ${index === activeTestCaseId ? "active" : ""}`;
+                    button.textContent = `Case ${index + 1}`;
+                    button.onclick = () => selectTestCase(index);
+                    casesContainer.appendChild(button);
+                });
+    
+                updateTestCaseView();
+            }
+    
+            function selectTestCase(index) {
+                activeTestCaseId = index;
+                renderTestCases();
+            }
+            function updateTestCaseView() {
+            document.getElementById("input-box").textContent = testCases[activeTestCaseId].inputText;
+            document.getElementById("output-box").textContent = testCases[activeTestCaseId].outputText;
+        }
+        async function runCppCode() {
+    let code = cppEditor.getValue();
+    let input = testCases[activeTestCaseId].inputText.replace(/\[|\]/g, "").replace(/,\s*/g, "\n");
+
+    try {
+        let response = await fetch("http://localhost:5000/run", { 
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ code, input })
+        });
+
+        let result = await response.json();
+        document.getElementById("result-box").textContent = result.output?.trim() || "Error: No output";
+    } catch (error) {
+        document.getElementById("result-box").textContent = "Execution failed: " + error.message;
+    }
+}
+
+        renderTestCases();
+    </script>
+    </div>
+    
+</div>
+
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        Split(['#split-0', '#split-1'], {
+            sizes: [50, 50],
+            minSize: 100, 
+            gutterSize: 10, 
+            cursor: 'col-resize'
+        });
+
+        Split(['#nested-0', '#nested-1'], {
+            direction: 'vertical',
+            sizes: [50, 50],
+            minSize: 60,
+            gutterSize: 10,
+            cursor: 'row-resize'
+        });
+    });
+    $(document).ready(function() {
+        $("#runBtn").click(function() {
+            const submittedCode = $("#codeInput").val().trim();
+            if (!submittedCode) {
+                $("#verdict").text("Error: No code entered.").css("color", "red");
+                $("#submitBtn").css({"background-color": "gray", "cursor": "not-allowed", "pointer-events": "none"});
+                return;
+            }
+    
+            // Simulating evaluation (Replace this with real evaluation logic)
+            const isCorrect = Math.random() < 0.5; // Random pass/fail verdict
+            if (isCorrect) {
+                $("#verdict").text("Accepted").css("color", "green");
+                $("#submitBtn").css({"background-color": "green", "cursor": "pointer", "pointer-events": "auto"})
+                              .attr("href", "submission.html"); // Activates the link
+            } else {
+                $("#verdict").text("Wrong Answer").css("color", "red");
+                $("#submitBtn").css({"background-color": "gray", "cursor": "not-allowed", "pointer-events": "none"})
+                              .attr("href", "#"); // Prevents navigation
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

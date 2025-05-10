@@ -1,0 +1,185 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #1a0b2e; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #ffffff;
+}
+
+
+header {
+    background-color: rgba(27, 11, 46, 1); /* Solid background instead of transparent */
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 0 20px;
+    border-bottom: 1px solid #e100ff;
+    box-shadow: 0 0 15px rgba(225, 0, 255, 0.3);
+}
+
+
+#navbar {
+    height: 100%;
+    display: flex;
+    position: fixed;
+    align-items: center;
+}
+
+#navbar svg {
+    height: 45px;
+    width: auto;
+    display: block;
+    position: fixed;
+    filter: drop-shadow(0 0 8px rgba(225, 0, 255, 0.5)); 
+}
+
+.tabs {
+    display: flex;
+    position: relative;
+    margin-left: 75%;
+    align-items: center;
+    gap: 15px;
+}
+
+.pages {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-button {
+    color: #ffffff;
+    background-color: transparent;
+    padding: 8px 15px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid rgba(225, 0, 255, 0.5);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-button:hover {
+    background-color: rgba(225, 0, 255, 0.2);
+    box-shadow: 0 0 10px rgba(225, 0, 255, 0.4);
+}
+
+.nav-button:active {
+    transform: scale(0.95);
+    background-color: #9D6CBE;
+    border-color: rgba(225, 0, 255, 0.7);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: transparent;
+    color: white;
+    padding: 8px 12px;
+    font-size: 18px;
+    border: 2px solid rgba(225, 0, 255, 0.5);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dropbtn:hover {
+    background-color: rgba(225, 0, 255, 0.2);
+    box-shadow: 0 0 10px rgba(225, 0, 255, 0.4);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #2d0130;
+    min-width: 180px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    z-index: 101;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    display: block;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.dropdown-content a:hover {
+    background: linear-gradient(90deg, #e100ff, #7f00ff);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+main {
+    width: 80%;
+    max-width: 800px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+h1 {
+    font-size: 36px;
+    color: #e100ff;
+    text-shadow: 0 0 10px rgba(225, 0, 255, 0.7);
+}
+
+.faq-section {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(225, 0, 255, 0.3);
+    text-align: left;
+}
+
+.faq-section h2 {
+    font-size: 24px;
+    color: #e100ff;
+    border-bottom: 2px solid #e100ff;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.faq-item {
+    padding: 15px;
+    margin: 10px 0;
+    border-left: 4px solid #e100ff;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(225, 0, 255, 0.2);
+}
+
+.faq-item h3 {
+    font-size: 20px;
+    color: #e100ff;
+}
+
+.faq-item p {
+    font-size: 18px;
+    color: #ddd;
+    margin-top: 5px;
+}

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - CodeKin</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <header>
+        <div id="navbar">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200">
+                <g class="logo-triangle">
+                    <path d="M100 160 L180 30 L20 30 Z" fill="none" stroke="#e100ff" stroke-width="4"/>
+                    <path d="M100 140 L165 40 L35 40 Z" fill="none" stroke="#e100ff" stroke-width="4" opacity="0.7"/>
+                    <path d="M100 120 L150 50 L50 50 Z" fill="none" stroke="#e100ff" stroke-width="4" opacity="0.4"/>
+                </g>
+                <text x="220" y="110" font-family="Arial Black, Arial Bold, sans-serif" font-size="100" font-weight="900" fill="#ffffff">CodeKin</text>
+            </svg>
+        </div>
+        <div class="tabs">
+            <div class="pages">
+                <a href="homepage.html" class="nav-button" id="home">Home</a>
+                <a href="problems.html" class="nav-button" id="problems">Practice</a>
+                <a href="courses.html" class="nav-button" id="courses">Courses</a>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">▾</button>
+                <div class="dropdown-content">
+                    <a href="Profile.html">Profile</a>
+                    <a href="editprofile.html">Edit Profile</a>
+                    <a href="HelpDesk.html">Help Desk</a>
+                    <a href="index.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="profile-layout">
+        <div class="profile-sidebar">
+            <div class="public-profile-header">
+                <h2>Public Profile</h2>
+                <div class="toggle-switch"></div>
+            </div>
+    
+            <div class="profile-info">
+                <div class="profile-avatar" id="profile-avatar">I</div>
+                <div class="profile-details">
+                    <h1 id="username">Loading...</h1>
+                    <div class="global-rank">Global Rank #<span id="global-rank">Loading...</span></div>
+                    <div class="join-date">Since: <span id="join-date">Loading...</span></div>
+                </div>
+            </div>
+            
+            <div class="private-email">
+                <span class="email-icon">✉</span> 
+                <span id="user-email">Loading...</span>
+            </div>
+
+            <div class="institution">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%234a5568'%3E%3Cpath d='M12 14l9-5-9-5-9 5 9 5z'/%3E%3C/svg%3E" alt="education">
+                <span id="institute-name">Loading...</span>
+            </div>
+    
+            <a href="editprofile.html" class="edit-profile-btn">Edit Profile</a>
+            
+            <div class="stats-section">
+                <h2>My Stats</h2>
+                <div class="stat-item">
+                    <span>Global Rank</span>
+                    <span class="stat-value" id="global-rank-stat">Loading...</span>
+                </div>
+                <div class="stat-item">
+                    <span>University Rank</span>
+                    <span class="stat-value" id="university-rank">Loading...</span>
+                </div>
+                <div class="stat-item">
+                    <span>Time Spent</span>
+                    <span class="stat-value" id="time-spent">Loading...</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="progress-content">
+            <section class="progress">
+                <h2>My Progress</h2>
+                <div class="progress_container">
+                    <div class="chart">
+                        <div class="daily_goals">
+                            <div class="graph-container">
+                                <div class="goal-header">
+                                </div>
+                                <div class="goal-graph">
+                                    <div class="y-axis">
+                                        <div class="y-label">5000</div>
+                                        <div class="y-label">4000</div>
+                                        <div class="y-label">3000</div>
+                                        <div class="y-label">2000</div>
+                                        <div class="y-label">1000</div>
+                                        <div class="y-label">0</div>
+                                    </div>
+                                    <div class="graph">
+                                        <div class="goal-line" style="top: calc(100% - 5000px);"></div>
+                                        <div class="progress-line" id="progress-line" style="top: calc(100% - 0px);"></div>
+                                        <div class="goal-marker"></div>
+                                        <div class="progress-marker"></div>
+                                    
+                                        <!-- Tooltip to show on hover -->
+                                        <div class="day-tooltip" id="progress-tooltip" style="display: none;">
+                                            <div class="tooltip-content">
+                                                <p><span>Score:</span> <span id="tooltip-coins">0</span></p>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </div>
+                                <div class="x-axis">
+                                    <div class="x-label">Sun</div>
+                                    <div class="x-label">Mon</div>
+                                    <div class="x-label">Tue</div>
+                                    <div class="x-label">Wed</div>
+                                    <div class="x-label">Thu</div>
+                                    <div class="x-label">Fri</div>
+                                    <div class="x-label">Sat</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stats">
+                        <div class="coins">
+                            <span class="stat-icon">Coins 🪙</span>
+                            <p id="coins">0</p>
+                        </div>
+                        <div class="streak">
+                            <span class="stat-icon">Streak 🔥</span>
+                            <p id="streak">0</p>
+                        </div>
+                        <div class="problems">
+                            <span class="stat-icon">Problems Solved ✅</span>
+                            <p id="total-problems-solved">0</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="activity-fullwidth">
+            <div class="activity-grid-container">
+                <div class="activity-grid-header">
+                    <h2 class="activity-grid-title">Activity</h2>
+                    <div class="activity-grid-legend">
+                        <div class="legend-item">
+                            <span>Number of problems </span>
+                            <div class="legend-color legend-low"></div>
+                            <!-- <span>Low</span> -->
+                             
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color legend-medium"></div>
+                            <!-- <span>Medium</span> -->
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color legend-high"></div>
+                            <!-- <span>High</span> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="activity-grid-wrapper">
+                    <div class="activity-day-labels">
+                        <div class="day-label">Mon</div>
+                        <div class="day-label"></div>
+                        <div class="day-label">Wed</div>
+                        <div class="day-label"></div>
+                        <div class="day-label">Fri</div>
+                        <div class="day-label"></div>
+                        <div class="day-label">Sun</div>
+                    </div>
+                    <div class="activity-grid-map" id="activity-grid-map"></div>
+                </div>
+                <div class="activity-months">
+                    <span>Jan</span>
+                    <span>Feb</span>
+                    <span>Mar</span>
+                    <span>Apr</span>
+                    <span>May</span>
+                    <span>Jun</span>
+                    <span>Jul</span>
+                    <span>Aug</span>
+                    <span>Sep</span>
+                    <span>Oct</span>
+                    <span>Nov</span>
+                    <span>Dec</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js"></script>
+    <script type="module" src="https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js"></script>
+    <script type="module" src="profile.js"></script>
+</body>
+</html>

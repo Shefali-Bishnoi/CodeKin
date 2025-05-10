@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="homepage.css">
+    <title>Home Page</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let iframes = document.querySelectorAll("iframe");
+
+            iframes.forEach(iframe => {
+                let src = iframe.getAttribute("data-src"); // Use data-src instead of src
+                iframe.removeAttribute("src"); // Remove src initially
+                
+                setTimeout(() => { 
+                    iframe.setAttribute("src", src); 
+                }, 1000); // Set the src after a delay (1 second)
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div id="navbar">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200">
+                <!-- Triangle Logo -->
+                <g class="logo-triangle">
+                  <!-- Outer triangle -->
+                  <path d="M100 160 L180 30 L20 30 Z" fill="none" stroke="#e100ff" stroke-width="4"/>
+                  <!-- Middle triangle -->
+                  <path d="M100 140 L165 40 L35 40 Z" fill="none" stroke="#e100ff" stroke-width="4" opacity="0.7"/>
+                  <!-- Inner triangle -->
+                  <path d="M100 120 L150 50 L50 50 Z" fill="none" stroke="#e100ff" stroke-width="4" opacity="0.4"/>
+                </g>
+                
+                <!-- Text "CodeKin" -->
+                <text x="220" y="110" font-family="Arial Black, Arial Bold, sans-serif" font-size="100" font-weight="900" fill="#ffffff">CodeKin</text>
+                
+              </svg>
+        </div>
+        <div class="nav-buttons-container">
+            <button class="nav-button" id="home" onclick="window.location.href='homepage.html'">Home</button>
+            <button class="nav-button" id="profile" onclick="window.location.href='profile.html'">Profile</button>
+            <button class="nav-button" id="problems" onclick="window.location.href='Problems.html'">Problems</button>
+            <button class="nav-button" id="helpdesk" onclick="window.location.href='helpdesk.html'">Helpdesk</button>
+            <button class="nav-button" id="feedback" onclick="window.location.href='feedback.html'">Feedback</button>
+        </div> 
+    </header>
+    <div>
+        <section class="hero-section">
+            <div class="hero-overlay"></div>
+            <div class="welcome-container">
+                <h1 class="welcome-text">Welcome to</h1>
+                <div class="site-name">CodeKin</div>
+                <p class="tagline">A FAMILY OF CODERS HELPING EACH OTHER GROW</p>
+            </div>
+        </section>
+    </div>
+    <section class="features">
+        <h2>Our Features</h2>
+    
+        <div class="feature-box odd">
+            <iframe data-src="Problems.html"></iframe>
+            <div class="feature-desc">
+                <h3>Interactive Coding</h3>
+                <p>Practice with real-time coding challenges and hands-on exercises.</p>
+            </div>
+        </div>
+    
+        <div class="feature-box even">
+            <div class="feature-desc">
+                <h3>Structured Courses</h3>
+                <p>Follow guided learning paths designed for beginners to advanced coders.</p>
+            </div>
+            <iframe data-src="courses.html"></iframe>
+        </div>
+    
+        <div class="feature-box odd">
+            <iframe data-src="Profile.html"></iframe>
+            <div class="feature-desc">
+                <h3>User Profile & Streaks</h3>
+                <p>Track your daily coding activity, monitor progress, and maintain your streak to stay consistent.</p>
+            </div>
+        </div>
+    
+        <div class="feature-box even">
+            <div class="feature-desc">
+                <h3>Live Code Editor</h3>
+                <p>Write and test your code directly in your browser.</p>
+            </div>
+            <iframe data-src="2_sum.html"></iframe>
+        </div>
+    
+    </section>
+    <section class="cta-section">
+        <h2>Start Your Coding Journey Today!</h2>
+        <p>Join thousands of learners improving their coding skills every day.</p>
+        <div class="cta-buttons">
+            <a href="register.html" class="cta-button primary">Get Started</a>
+            <a href="courses.html" class="cta-button secondary">Explore Courses</a>
+        </div>
+    </section>
+    
+    <section class="faq-teaser">
+        <div class="faq-teaser-container">
+            <h2 class="faq-title">Have Questions?</h2>
+            
+            <div class="faq-preview">
+                <div class="faq-preview-content">
+                    <div class="faq-icon-large">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <div class="faq-text">
+                        <p>Find answers to commonly asked questions about CodeKin's features, courses, pricing, and more on our comprehensive Helpdesk.</p>
+                        <div class="faq-samples">
+                            <span class="faq-sample-item">"How do I get started?"</span>
+                            <span class="faq-sample-item">"What languages do you support?"</span>
+                            <span class="faq-sample-item">"Do I need to install anything?"</span>
+                        </div>
+                    </div>
+                </div>
+                <a href="helpdesk.html" class="helpdesk-button">Visit Our Helpdesk</a>
+            </div>
+        </div>
+    </section>        
+</div>
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h2 class="footer-logo">CodeKin</h2>
+            <p class="footer-tagline">A family of coders helping each other grow.</p>
+        </div>
+
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="about_us.html">About Us</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="helpdesk.html">Helpdesk</a></li>
+                <li><a href="contact_us.html">Contact</a></li>
+                
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 CodeKin. All rights reserved.</p>
+    </div>
+</footer> 
+</body>
+</html>
