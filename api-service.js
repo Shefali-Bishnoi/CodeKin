@@ -1,7 +1,7 @@
 // api-service.js - Place this in your js folder
 
 // Configuration
-const API_URL = 'https://codekin-3cn5.onrender.com/run';
+const API_URL = 'https://codekin-l4a6.onrender.com/run';
 
 // API Functions
 const CodeRunnerAPI = {
