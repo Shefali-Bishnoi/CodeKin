@@ -6,7 +6,12 @@ import requests
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
-@app.route('/run', methods=['POST'])
+# Optional root route to confirm deployment
+@app.route("/", methods=["GET"])
+def home():
+    return "Code execution backend is live!"
+
+@app.route("/run", methods=["POST"])
 def run_code():
     data = request.json
     code = data.get("code", "")
@@ -20,17 +25,20 @@ def run_code():
     if not client_id or not client_secret:
         return jsonify({"error": "API credentials not configured"}), 500
     
-    response = requests.post("https://api.jdoodle.com/v1/execute", json={
-        "script": code,
-        "language": "cpp17",
-        "versionIndex": "1",
-        "stdin": stdin,
-        "clientId": client_id,
-        "clientSecret": client_secret
-    })
-    
-    return jsonify(response.json())
+    try:
+        response = requests.post("https://api.jdoodle.com/v1/execute", json={
+            "script": code,
+            "language": "cpp17",
+            "versionIndex": "1",
+            "stdin": stdin,
+            "clientId": client_id,
+            "clientSecret": client_secret
+        })
+        return jsonify(response.json())
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
-# For local development only - this won't run in production
+# Production-safe server launch
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # Use Render-assigned port
+    app.run(host="0.0.0.0", port=port)
