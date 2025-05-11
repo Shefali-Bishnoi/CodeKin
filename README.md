@@ -1,4 +1,4 @@
-# 💻 CodeKin – A Coding Platform
+![Screenshot_11-5-2025_113020_shefali-bishnoi github io](https://github.com/user-attachments/assets/6e81e4a6-2bc1-4a2a-8604-e0a4f5b7d6d8)# 💻 CodeKin – A Coding Platform
 
 *CodeKin* is a user-friendly, full-featured online coding platform built to help users improve their problem-solving skills and track their performance through global and university-specific rankings. Whether you're a student, educator, or programming enthusiast, CodeKin provides a structured environment for daily practice, feedback, and growth.
 
@@ -64,8 +64,10 @@ CodeKin is a user-friendly online coding platform designed to help learners and 
   </div>
 - 🧾 Get answers of different queries via **Helpdesk**
     <div align="center">
-    <img src="https://github.com/user-attachments/assets/de83a696-1aab-4dcf-9856-e5e2011a760c" width="600"/>
-  </div>
+    <img src="https://github.com/user-attachments/assets/a04f1a98-f777-459e-8890-ed5e2bd73d01" width="600"/>
+    </div>
+
+
 - 🗨 Report website issues through the **Feedback** section
     <div align="center">
     <img src="https://github.com/user-attachments/assets/194a4510-2111-4378-9c73-b911c6b5891d" width="600"/>
