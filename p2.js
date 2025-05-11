@@ -90,7 +90,6 @@ function parseTestCases(description) {
         console.log("Found test case - Input:", inputStr, "Output:", outputStr);
 
         const inputs = {};
-        // Match key-value pairs, capturing arrays as single values
         const keyValueRegex = /(\w+)\s*=\s*(\[.*?\]|[^,]+)(?:,|$)/g;
         let kvMatch;
         let idx = 0;
@@ -509,7 +508,7 @@ using namespace std;
 
     templateCode += `${returnType} ${functionName}(${params.join(", ")}) {
     // TODO: Implement your solution
-    ${returnType === "vector<int>" ? "return {};" : returnType === "double" ? "return 0.0;" : returnType === "bool" ? "return false;" : "return true;"
+    ${returnType === "vector<int>" ? "return {};" : returnType === "double" ? "return 0.0;" : returnType === "bool" ? "return false;" : "return true;"}
 }
 `;
 
@@ -865,8 +864,7 @@ async function saveProblemStatus(verdict) {
             status,
             verdict,
             difficulty: problemDifficulty,
-            timestamp: serverTimestamp(),
-            updatedAt: serverTimestamp()
+            timestamp: serverTimestamp()
         };
         console.log("saveProblemStatus: Attempting save - uid:", auth.currentUser.uid, "data:", data);
 
