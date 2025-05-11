@@ -6,7 +6,7 @@
 
 ## 📋 Table of Contents
 
-- [Introduction](#📌introduction)
+- [Introduction](#introduction)
 - [Features](#features)
 - [Live Demo](#live-demo)
 - [Tools and Technology](#tools-and-technology)
@@ -16,13 +16,13 @@
 
 ---
 
-## 📌 Introduction
+##  Introduction
 
 CodeKin is a user-friendly online coding platform designed to help learners and developers improve their programming skills through daily problem-solving and real-time rankings. It offers a variety of challenges, categorized by difficulty, and tracks user performance via global and university-based leaderboards. CodeKin is built to support consistent learning, competitive coding, and community-driven improvement—all in one place.
 
 ---
 
-## 🚀 Features
+## Features
 
 - 🔐 User **Login/Register** functionality for privacy purpose. 
 - 🧠 Solve diverse programming problems and Practice with real-time coding challenges and hands-on exercises.
@@ -36,13 +36,13 @@ CodeKin is a user-friendly online coding platform designed to help learners and 
 
 ---
 
-## 🌐 Live Demo
+## Live Demo
 
 Check It Out at  **[CodeKin](https://shefali-bishnoi.github.io/CodeKin/)**
 
 ---
 
-## 🛠 Tools and Technology
+## Tools and Technology
 
 *Editor:* [CodeMirror](https://codemirror.net/)
 *Compiler:* [JDoodle](https://www.jdoodle.com/)
@@ -54,7 +54,7 @@ Check It Out at  **[CodeKin](https://shefali-bishnoi.github.io/CodeKin/)**
 
 ---
 
-## 🔗 API Integration
+## API Integration
 
 The *CodeKin* platform utilizes an external API to dynamically fetch problems for users. This API ensures a wide range of coding challenges that are updated regularly, giving users fresh content to engage with. The API serves as the backend for problem feeds and helps manage and retrieve challenge data seamlessly.
 It includes some limited fetches per day as well. 
@@ -75,7 +75,7 @@ The integration of the API enables CodeKin to offer real-time, dynamic problem-s
     ![](readme_media/media/image7.png) 
     ![](readme_media/media/image8.png) 
 
-## ✅ Conclusion
+## Conclusion
 CodeKin offers a streamlined coding experience, encouraging learners to solve problems, monitor progress, and compete globally. Its intuitive interface, real-time features, and responsive design make it an ideal choice for anyone passionate about programming and learning.
 
 ## Team  
