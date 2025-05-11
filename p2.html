@@ -22,7 +22,7 @@
         <div id="split-1" class="vertical-split">
             <div id="nested-0">
                 <textarea id="cppEditor" class="code-editor"></textarea>
-                <button class="run-btn" onclick="runCppCode()">Run Code</button>
+                <button id="run-button" class="run-btn" onclick="runCppCode()">Run Code</button>
             </div>
             <div id="nested-1">
                 <div class="container">
@@ -47,5 +47,20 @@
     <script src="https://cdn.jsdelivr.net/npm/codemirror/mode/clike/clike.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/codemirror/addon/edit/closebrackets.js"></script>
     <script type="module" src="p2.js"></script>
+    <script>
+        // Initialize Split.js for resizable panes
+        Split(['#split-0', '#split-1'], {
+            sizes: [50, 50],
+            minSize: [300, 300],
+            gutterSize: 10,
+            direction: 'horizontal'
+        });
+        Split(['#nested-0', '#nested-1'], {
+            sizes: [60, 40],
+            minSize: [200, 200],
+            gutterSize: 10,
+            direction: 'vertical'
+        });
+    </script>
 </body>
 </html>
