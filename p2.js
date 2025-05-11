@@ -458,7 +458,7 @@ using namespace std;
 
     templateCode += `${returnType} ${functionName}(${params.join(", ")}) {
     // TODO: Implement your solution
-    ${returnType === "vector<int>" ? "return {};" : returnType === "double" ? "return 0.0;" : returnType === "bool" ? "return false;" : 'return "";}
+    ${returnType === "vector<int>" ? "return {};" : returnType === "double" ? "return 0.0;" : returnType === "bool" ? "return false;" : "return true;"
 }
 `;
 
