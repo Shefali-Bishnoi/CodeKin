@@ -118,10 +118,7 @@ CodeKin offers a streamlined coding experience, encouraging learners to solve pr
 
 ---
 
-## Team  
- <div align="center">
-    <img src="https://github.com/user-attachments/assets/5e5d0258-5598-495e-8849-b6946f7b6537" width="600"/>
-  </div>
+## Team 
 
 - Sakshi Saxena (2301CS45) 
 - Shiwani Shrivastava (2301CS67)
@@ -129,3 +126,7 @@ CodeKin offers a streamlined coding experience, encouraging learners to solve pr
 - Saniya Prakash (2301CS49)
 - Shefali Bishnoi (2301CS87)  
 - Manshi Prajapati (2302CS08)
+ <div align="center">
+    <img src="https://github.com/user-attachments/assets/5e5d0258-5598-495e-8849-b6946f7b6537" width="600"/>
+  </div>
+
