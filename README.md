@@ -9,7 +9,7 @@
 - [Introduction](#introduction)
 - [Features](#features)
 - [Live Demo](#live-demo)
-- [Tech Stack](#tech-stack)
+- [Tools and Technology](#tools-and-technology)
 - [Screenshots](#screenshots)
 - [Conclusion](#conclusion)
 - [Team](#team)
@@ -23,29 +23,33 @@ CodeKin is a user-friendly online coding platform designed to help learners and 
 
 ## 🚀 Features
 
-- 🔐 User *Login/Register* functionality for privacy purpose. 
+- 🔐 User **Login/Register** functionality for privacy purpose. 
 - 🧠 Solve diverse programming problems and Practice with real-time coding challenges and hands-on exercises.
-- *Reward System* (🪙 🔥) - Earn *coins* by solving problems and climb the *streak* daily. 
-- 🏆 View *Global* and *University*-specific rankings.
+- **Reward System** (🪙 🔥) - Earn **coins** by solving problems and climb the **streak** daily. 
+- 🏆 View **Global** and **University**-specific rankings.
 - 📈 Track your daily activity in activity map
-- 📚 Learn through the integrated *Courses* section. Follow guided learning paths designed for beginners to advanced coders.  
-- 📋*Live Code Editor* - Write and test your code directly in your browser.
-- 🧾 Get answers of different queries via *Helpdesk*
-- 🗨 Report website issues through the *Feedback* section
+- 📚 Learn through the integrated **Courses** section. Follow guided learning paths designed for beginners to advanced coders.  
+- 📋**Live Code Editor** - Write and test your code directly in your browser.
+- 🧾 Get answers of different queries via **Helpdesk**
+- 🗨 Report website issues through the **Feedback** section
 
 ---
 
 ## 🌐 Live Demo
 
-Check It Out at  *[CodeKin](https://shefali-bishnoi.github.io/CodeKin/)*
+Check It Out at  **[CodeKin](https://shefali-bishnoi.github.io/CodeKin/)**
 
 ---
 
-## 🛠 Tech Stack
+## 🛠 Tools and Technology
 
-*Frontend:* HTML, CSS, JavaScript  
-*Backend:* Firebase, API integration, Python  
-*Hosting:* Render, GitHub Pages
+*Editor:* [CodeMirror](https://codemirror.net/)
+*Compiler:* [JDoodle](https://www.jdoodle.com/)
+*HTML:* standard markup language for creating web pages
+*CSS:* style sheet language
+*JavaScript:* programming language that gives web pages interactive elements
+*Python:* Used for building the backend server.
+*Deployment:* [Github Pages]( https://shefali-bishnoi.github.io/CodeKin/) and [Render](https://codekin-l4a6.onrender.com) 
 
 ---
 
