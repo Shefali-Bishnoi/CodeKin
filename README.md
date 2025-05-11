@@ -39,13 +39,13 @@ CodeKin is a user-friendly online coding platform designed to help learners and 
   </div>
 - **Firebase** which stores the data for problems solved for each user, Feedbacks storage, user authentication and all other details foe a user.
 - <p align="center">
-      <img src="https://github.com/user-attachments/assets/efe4ff92-5cc8-41aa-a295-df3e4876c25d" width="300"/>
+      <img src="https://github.com/user-attachments/assets/efe4ff92-5cc8-41aa-a295-df3e4876c25d" width="250"/>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
-      <img src="https://github.com/user-attachments/assets/3db3867a-5a0b-41fd-90ce-888540b768b7" width="300"/>
+      <img src="https://github.com/user-attachments/assets/3db3867a-5a0b-41fd-90ce-888540b768b7" width="250"/>
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-     <img src="https://github.com/user-attachments/assets/ec737566-e962-4655-8876-c4156bdab11d" width="300"/>
+     <img src="https://github.com/user-attachments/assets/ec737566-e962-4655-8876-c4156bdab11d" width="250"/>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-     <img src="https://github.com/user-attachments/assets/495b8bcc-bf2a-453c-a1e5-cb66a3897bff" width="300"/>
+     <img src="https://github.com/user-attachments/assets/495b8bcc-bf2a-453c-a1e5-cb66a3897bff" width="250"/>
   </p>
 
 - **Reward System** (🪙 🔥) - Earn **coins** by solving problems and climb the **streak** daily.
