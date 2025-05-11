@@ -72,7 +72,7 @@ function displayError(message) {
 
 // Parse test cases from problem description
 function parseTestCases(description) {
-    console.log("Parsing test cases from description...");
+    console.log("Parsing test cases from description:", description);
     const testCases = [];
     const exampleRegex = /Example \d+:\s*\n\s*Input:\s*([^\n]+)\s*\n\s*Output:\s*([^\n]+)/g;
     let match;
@@ -83,13 +83,15 @@ function parseTestCases(description) {
         console.log("Found test case - Input:", inputStr, "Output:", outputStr);
 
         const inputs = {};
-        const keyValueRegex = /(\w+)\s*=\s*([^,]+)(?:,|$)/g;
+        // Match key-value pairs, capturing arrays as single values
+        const keyValueRegex = /(\w+)\s*=\s*(\[.*?\]|[^,]+)(?:,|$)/g;
         let kvMatch;
         let idx = 0;
 
         while ((kvMatch = keyValueRegex.exec(inputStr)) !== null) {
             const key = kvMatch[1].trim();
             let value = kvMatch[2].trim();
+            console.log(`Parsing input - Key: ${key}, Value: ${value}`);
             if (value.startsWith('"') && value.endsWith('"')) {
                 value = value.slice(1, -1);
             }
@@ -99,6 +101,7 @@ function parseTestCases(description) {
 
         if (idx === 0 && inputStr.trim() !== "") {
             inputs["input"] = inputStr;
+            console.log("No key-value pairs found, using raw input:", inputStr);
         }
 
         testCases.push({
@@ -120,6 +123,7 @@ function parseTestCases(description) {
         Object.keys(tc).forEach(key => {
             if (key === "id" || key === "outputText" || key === "rawInputText") return;
             let value = tc[key];
+            console.log(`Normalizing input - Key: ${key}, Value: ${value}`);
             if (value.match(/^\[.*\]$/)) {
                 normalizedInputs[key] = value;
             } else if (!isNaN(value)) {
@@ -412,6 +416,7 @@ function generateTemplateCode() {
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <iomanip>
 using namespace std;
 `;
 
@@ -453,7 +458,7 @@ using namespace std;
 
     templateCode += `${returnType} ${functionName}(${params.join(", ")}) {
     // TODO: Implement your solution
-    ${returnType === "vector<int>" ? "return {};" : returnType === "double" ? "return 0.0;" : returnType === "bool" ? "return false;" : "return "
+    ${returnType === "vector<int>" ? "return {};" : returnType === "double" ? "return 0.0;" : returnType === "bool" ? "return false;" : 'return "";}
 }
 `;
 
@@ -519,6 +524,9 @@ using namespace std;
     } else if (returnType === "bool") {
         templateCode += `    cout << (result ? "true" : "false");
 `;
+    } else if (returnType === "double") {
+        templateCode += `    cout << fixed << setprecision(5) << result;
+`;
     } else {
         templateCode += `    cout << result;
 `;
@@ -550,7 +558,8 @@ async function runCppCode() {
         document.getElementById("result-box").textContent = "Running...";
         document.getElementById("verdict-box").textContent = "Evaluating";
 
-        const response = await fetch("https://codekin-l4a6.onrender.com/run", {
+        console.log("runCppCode: Fetching http://localhost:5000/run");
+        const response = await fetch("http://localhost:5000/run", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ code, input })
@@ -604,7 +613,8 @@ async function runAllTestCases() {
 
         try {
             const input = prepareTestCaseInput(testCase);
-            const response = await fetch("https://codekin-l4a6.onrender.com/run", {
+            console.log("runAllTestCases: Fetching http://localhost:5000/run");
+            const response = await fetch("http://localhost:5000/run", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ code, input })
@@ -724,20 +734,25 @@ function prepareTestCaseInput(testCase) {
 
 // Check verdict
 function checkVerdict(userOutput, expectedOutput) {
+    console.log("Checking verdict - User Output:", userOutput, "Expected Output:", expectedOutput);
     const normalizeOutput = output => output.trim().replace(/\s+/g, "").replace(/[\[\]]/g, "");
     const normalizedUserOutput = normalizeOutput(userOutput);
     const normalizedExpected = normalizeOutput(expectedOutput);
+    console.log("Normalized - User Output:", normalizedUserOutput, "Expected Output:", normalizedExpected);
 
     if (!isNaN(parseFloat(normalizedUserOutput)) && !isNaN(parseFloat(normalizedExpected))) {
         const userNum = parseFloat(normalizedUserOutput);
         const expectedNum = parseFloat(normalizedExpected);
+        console.log(`Floating-point comparison: |${userNum} - ${expectedNum}| < 1e-5`);
         return Math.abs(userNum - expectedNum) < 1e-5 ? "Accepted" : "Wrong Answer";
     }
 
     if (normalizedExpected.toLowerCase() === "true" || normalizedExpected.toLowerCase() === "false") {
+        console.log("Boolean comparison:", normalizedUserOutput.toLowerCase(), normalizedExpected.toLowerCase());
         return normalizedUserOutput.toLowerCase() === normalizedExpected.toLowerCase() ? "Accepted" : "Wrong Answer";
     }
 
+    console.log("String comparison:", normalizedUserOutput, normalizedExpected);
     return normalizedUserOutput === normalizedExpected ? "Accepted" : "Wrong Answer";
 }
 
