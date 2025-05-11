@@ -65,6 +65,8 @@ It includes some limited fetches per day as well.
 
 The integration of the API enables CodeKin to offer real-time, dynamic problem-solving experiences while keeping the platform scalable and adaptable to user needs.
 
+---
+
 ## Screenshots
     ![](readme_media/media/image1.png) 
     ![](readme_media/media/image2.png) 
@@ -75,8 +77,12 @@ The integration of the API enables CodeKin to offer real-time, dynamic problem-s
     ![](readme_media/media/image7.png) 
     ![](readme_media/media/image8.png) 
 
+--- 
+
 ## Conclusion
 CodeKin offers a streamlined coding experience, encouraging learners to solve problems, monitor progress, and compete globally. Its intuitive interface, real-time features, and responsive design make it an ideal choice for anyone passionate about programming and learning.
+
+---
 
 ## Team  
 - Sakshi Saxena (2301CS45) 
