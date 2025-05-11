@@ -44,13 +44,13 @@ Check It Out at  **[CodeKin](https://shefali-bishnoi.github.io/CodeKin/)**
 
 ## Tools and Technology
 
-*Editor:* [CodeMirror](https://codemirror.net/)
-*Compiler:* [JDoodle](https://www.jdoodle.com/)
-*HTML:* standard markup language for creating web pages
-*CSS:* style sheet language
-*JavaScript:* programming language that gives web pages interactive elements
-*Python:* Used for building the backend server.
-*Deployment:* [Github Pages]( https://shefali-bishnoi.github.io/CodeKin/) and [Render](https://codekin-l4a6.onrender.com) 
+- *Editor:* [CodeMirror](https://codemirror.net/)
+- *Compiler:* [JDoodle](https://www.jdoodle.com/)
+- *HTML:* standard markup language for creating web pages
+- *CSS:* style sheet language
+- *JavaScript:* programming language that gives web pages interactive elements
+- *Python:* Used for building the backend server.
+- *Deployment:* [Github Pages]( https://shefali-bishnoi.github.io/CodeKin/) and [Render](https://codekin-l4a6.onrender.com) 
 
 ---
 
