@@ -37,7 +37,17 @@ CodeKin is a user-friendly online coding platform designed to help learners and 
   <div align="center">
     <img src="https://github.com/user-attachments/assets/5b036b8a-427b-4144-ad54-787d7c94ede6" width="600"/>
   </div>
-
+- Firebase which stores the data for problems solved for each user, Feedbacks storage, user authentication and all other details foe a user.
+- <p align="center">
+        &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
+      <img src="https://github.com/user-attachments/assets/efe4ff92-5cc8-41aa-a295-df3e4876c25d" width="200"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
+      <img src="https://github.com/user-attachments/assets/3db3867a-5a0b-41fd-90ce-888540b768b7" width="200"/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <img src="https://github.com/user-attachments/assets/ec737566-e962-4655-8876-c4156bdab11d" width="200"/>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <img src="https://github.com/user-attachments/assets/495b8bcc-bf2a-453c-a1e5-cb66a3897bff" width="200"/>
+  </p>
 
 - **Reward System** (🪙 🔥) - Earn **coins** by solving problems and climb the **streak** daily.
 - 🏆 View **Global** and **University**-specific rankings.
@@ -93,6 +103,7 @@ Check It Out at  **[CodeKin](https://shefali-bishnoi.github.io/CodeKin/)**
 - *HTML:* standard markup language for creating web pages
 - *CSS:* style sheet language
 - *JavaScript:* programming language that gives web pages interactive elements
+- *[Firebase](https://console.firebase.google.com/u/0/):* Database to handle users authentications and problem submission data 
 - *Python:* Used for building the backend server.
 - *Deployment:* [Github Pages]( https://shefali-bishnoi.github.io/CodeKin/) and [Render](https://codekin-l4a6.onrender.com) 
 
