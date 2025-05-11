@@ -30,7 +30,7 @@ CodeKin is a user-friendly online coding platform designed to help learners and 
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
       <img src="https://github.com/user-attachments/assets/d8e24b01-f62e-4f62-b2dd-994a8f0ff537" width="200"/>
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-     <img src="" width="200"/>
+     <img src="https://github.com/user-attachments/assets/06fad5d2-786a-4136-a98e-6bb68050581f" width="200"/>
   </p>
   
 - 🧠 Solve diverse programming problems and Practice with real-time coding challenges and hands-on exercises.
