@@ -37,13 +37,39 @@ CodeKin is a user-friendly online coding platform designed to help learners and 
   </div>
 
 
-- **Reward System** (🪙 🔥) - Earn **coins** by solving problems and climb the **streak** daily. 
+- **Reward System** (🪙 🔥) - Earn **coins** by solving problems and climb the **streak** daily.
+  <div align="center">
+    <img src="https://github.com/user-attachments/assets/de83a696-1aab-4dcf-9856-e5e2011a760c" width="600"/>
+  </div>
+
 - 🏆 View **Global** and **University**-specific rankings.
+
+  <div align="center">
+    <img src="https://github.com/user-attachments/assets/de83a696-1aab-4dcf-9856-e5e2011a760c" width="600"/>
+  </div>
 - 📈 Track your daily activity in activity map
-- 📚 Learn through the integrated **Courses** section. Follow guided learning paths designed for beginners to advanced coders.  
+
+    <div align="center">
+    <img src="https://github.com/user-attachments/assets/de83a696-1aab-4dcf-9856-e5e2011a760c" width="600"/>
+  </div>
+- 📚 Learn through the integrated **Courses** section. Follow guided learning paths designed for beginners to advanced coders.
+
+    <div align="center">
+    <img src="https://github.com/user-attachments/assets/de83a696-1aab-4dcf-9856-e5e2011a760c" width="600"/>
+  </div>
+  
 - 📋**Live Code Editor** - Write and test your code directly in your browser.
+    <div align="center">
+    <img src="https://github.com/user-attachments/assets/de83a696-1aab-4dcf-9856-e5e2011a760c" width="600"/>
+  </div>
 - 🧾 Get answers of different queries via **Helpdesk**
+    <div align="center">
+    <img src="https://github.com/user-attachments/assets/de83a696-1aab-4dcf-9856-e5e2011a760c" width="600"/>
+  </div>
 - 🗨 Report website issues through the **Feedback** section
+    <div align="center">
+    <img src="https://github.com/user-attachments/assets/194a4510-2111-4378-9c73-b911c6b5891d" width="600"/>
+  </div>
 
 ---
 
