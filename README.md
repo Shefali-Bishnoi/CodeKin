@@ -1,4 +1,4 @@
- 💻 CodeKin – A Coding Platform
+## 💻 CodeKin – A Coding Platform
 
 *CodeKin* is a user-friendly, full-featured online coding platform built to help users improve their problem-solving skills and track their performance through global and university-specific rankings. Whether you're a student, educator, or programming enthusiast, CodeKin provides a structured environment for daily practice, feedback, and growth.
 
