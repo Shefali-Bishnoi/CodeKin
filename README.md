@@ -29,6 +29,8 @@ CodeKin is a user-friendly online coding platform designed to help learners and 
       <img src="https://github.com/user-attachments/assets/5000af0f-da77-4f42-bf70-9096bc08ebcd" width="200" style="margin-right:100px"/>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;
       <img src="https://github.com/user-attachments/assets/d8e24b01-f62e-4f62-b2dd-994a8f0ff537" width="200"/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <img src="" width="200"/>
   </p>
   
 - 🧠 Solve diverse programming problems and Practice with real-time coding challenges and hands-on exercises.
@@ -38,15 +40,18 @@ CodeKin is a user-friendly online coding platform designed to help learners and 
 
 
 - **Reward System** (🪙 🔥) - Earn **coins** by solving problems and climb the **streak** daily.
-  <div align="center">
-    <img src="https://github.com/user-attachments/assets/de83a696-1aab-4dcf-9856-e5e2011a760c" width="600"/>
-  </div>
-
 - 🏆 View **Global** and **University**-specific rankings.
-
   <div align="center">
-    <img src="https://github.com/user-attachments/assets/de83a696-1aab-4dcf-9856-e5e2011a760c" width="600"/>
+    <img src="https://github.com/user-attachments/assets/8920ac48-853c-4bd6-8876-67c34a5aff82" width="600"/>
   </div>
+
+
+- User can also **edit** his/her profile details whenever required for coorect authentication.
+  <div align="center">
+    <img src="https://github.com/user-attachments/assets/45505cc4-eaeb-4264-9d20-92c4bf2e97fe" width="600"/>
+  </div>
+
+
 - 📈 Track your daily activity in activity map
 
     <div align="center">
