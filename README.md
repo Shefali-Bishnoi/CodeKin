@@ -55,7 +55,7 @@ CodeKin is a user-friendly online coding platform designed to help learners and 
 - 📚 Learn through the integrated **Courses** section. Follow guided learning paths designed for beginners to advanced coders.
 
     <div align="center">
-    <img src="https://github.com/user-attachments/assets/0ae29e78-8adf-4aa4-b795-13ab34acb26f" width="600"/>
+    <img src="https://github.com/user-attachments/assets/b11a3a7a-9186-418e-95a4-fe27385deb6e" width="600"/>
   </div>
 
   
