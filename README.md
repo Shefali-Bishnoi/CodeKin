@@ -64,10 +64,8 @@ CodeKin is a user-friendly online coding platform designed to help learners and 
   </div>
 - 🧾 Get answers of different queries via **Helpdesk**
     <div align="center">
-    <img src="https://github.com/user-attachments/assets/a04f1a98-f777-459e-8890-ed5e2bd73d01" width="600"/>
+    <img src="https://github.com/user-attachments/assets/088c3e6d-8a9d-4776-87eb-28b80ee11ae8" width="600"/>
     </div>
-
-
 - 🗨 Report website issues through the **Feedback** section
     <div align="center">
     <img src="https://github.com/user-attachments/assets/194a4510-2111-4378-9c73-b911c6b5891d" width="600"/>
