@@ -39,7 +39,7 @@ CodeKin is a user-friendly online coding platform designed to help learners and 
   </div>
 - **Firebase** which stores the data for problems solved for each user, Feedbacks storage, user authentication and all other details foe a user.
 - <p align="center">
-      <img src="https://github.com/user-attachments/assets/efe4ff92-5cc8-41aa-a295-df3e4876c25d" width="200"/>
+      <img src="https://github.com/user-attachments/assets/efe4ff92-5cc8-41aa-a295-df3e4876c25d" width="400"/>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp; 
       <img src="https://github.com/user-attachments/assets/3db3867a-5a0b-41fd-90ce-888540b768b7" width="200"/>
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
