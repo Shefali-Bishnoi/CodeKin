@@ -10,7 +10,6 @@
 - [Features](#features)
 - [Live Demo](#live-demo)
 - [Tools and Technology](#tools-and-technology)
-- [Screenshots](#screenshots)
 - [Conclusion](#conclusion)
 - [Team](#team)
 
@@ -24,7 +23,8 @@ CodeKin is a user-friendly online coding platform designed to help learners and 
 
 ## Features
 
-- 🔐 User **Login/Register** functionality for privacy purpose. 
+- 🔐 User **Login/Register** functionality for privacy purpose.
+     ![](readme_media/media/image1.png) 
 - 🧠 Solve diverse programming problems and Practice with real-time coding challenges and hands-on exercises.
 - **Reward System** (🪙 🔥) - Earn **coins** by solving problems and climb the **streak** daily. 
 - 🏆 View **Global** and **University**-specific rankings.
@@ -69,17 +69,6 @@ The integration of the API enables CodeKin to offer real-time, dynamic problem-s
 
 ---
 
-## Screenshots
-    ![](readme_media/media/image1.png) 
-    ![](readme_media/media/image2.png) 
-    ![](readme_media/media/image3.png) 
-    ![](readme_media/media/image4.png) 
-    ![](readme_media/media/image5.png) 
-    ![](readme_media/media/image6.png) 
-    ![](readme_media/media/image7.png) 
-    ![](readme_media/media/image8.png) 
-
---- 
 
 ## Conclusion
 CodeKin offers a streamlined coding experience, encouraging learners to solve problems, monitor progress, and compete globally. Its intuitive interface, real-time features, and responsive design make it an ideal choice for anyone passionate about programming and learning.
