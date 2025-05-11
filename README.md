@@ -60,7 +60,7 @@ CodeKin is a user-friendly online coding platform designed to help learners and 
   
 - 📋**Live Code Editor** - Write and test your code directly in your browser.
     <div align="center">
-    <img src="https://github.com/user-attachments/assets/de83a696-1aab-4dcf-9856-e5e2011a760c" width="600"/>
+    <img src="https://github.com/user-attachments/assets/bead565a-fec9-47ad-88bc-cb70fbfec97d" width="600"/>
   </div>
 - 🧾 Get answers of different queries via **Helpdesk**
     <div align="center">
