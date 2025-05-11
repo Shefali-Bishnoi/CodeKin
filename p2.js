@@ -1,5 +1,5 @@
 import { auth, db } from "./firebase-config.js";
-import { doc, setDoc, serverTimestamp, getDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+import { doc, setDoc, serverTimestamp, getDoc, increment } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 
 let testCases = [];
@@ -10,6 +10,13 @@ let problemDifficulty = null;
 let runningAllTests = false;
 let userInputValues = {};
 let currentProblem = null;
+
+// Map statuses to emojis, consistent with problems.js
+const statusMap = {
+    Solved: "✅",
+    Attempted: "🔄",
+    "To-Do": "⏳"
+};
 
 // Initialize CodeMirror
 let cppEditor = null;
@@ -355,6 +362,7 @@ async function updateTestCaseView() {
             clearResultBoxes();
         }
     }
+    await showProblemStatus();
 }
 
 // Clear result boxes
@@ -372,33 +380,43 @@ function clearResultBoxes() {
 
 // Save code to Firestore
 async function saveCodeToFirestore(code) {
-    if (!userId || !problemId) return false;
+    if (!userId || !problemId) {
+        console.log("saveCodeToFirestore: Skipping - userId:", userId, "problemId:", problemId);
+        return false;
+    }
+
     try {
+        const path = `users/${userId}/problems/${problemId}`;
         const docRef = doc(db, "users", userId, "problems", problemId);
         await setDoc(docRef, { code, updatedAt: serverTimestamp() }, { merge: true });
-        console.log("Code saved to Firestore");
+        console.log("saveCodeToFirestore: Saved - path:", path);
         return true;
     } catch (error) {
-        console.error("saveCodeToFirestore: Error:", error.message);
+        console.error("saveCodeToFirestore: Failed - path:", path, "error:", error.message);
         return false;
     }
 }
 
 // Load code from Firestore
 async function loadCodeFromFirestore() {
-    if (!userId || !problemId) return;
+    if (!userId || !problemId) {
+        console.log("loadCodeFromFirestore: Skipping - userId:", userId, "problemId:", problemId);
+        return;
+    }
+
     try {
+        const path = `users/${userId}/problems/${problemId}`;
         const docRef = doc(db, "users", userId, "problems", problemId);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists() && docSnap.data().code) {
             cppEditor.setValue(docSnap.data().code);
-            console.log("Loaded code from Firestore");
+            console.log("loadCodeFromFirestore: Loaded - path:", path);
         } else {
             generateTemplateCode();
-            console.log("No saved code, generated template");
+            console.log("loadCodeFromFirestore: No saved code, generated template - path:", path);
         }
     } catch (error) {
-        console.error("loadCodeFromFirestore: Error:", error.message);
+        console.error("loadCodeFromFirestore: Failed - path:", path, "error:", error.message);
         generateTemplateCode();
     }
 }
@@ -409,13 +427,46 @@ function generateTemplateCode() {
         console.warn("Cannot generate template: no test cases or problem data");
         return;
     }
-    console.log("Generating template code...");
+    console.log("Generating template code for problemId:", problemId);
     const isLinkedList = isLinkedListProblem(currentProblem.description);
     const firstTestCase = testCases[0];
+
+    // Custom template for "Two Sum" (problemId === "1")
+    if (problemId === "1") {
+        const templateCode = `#include <iostream>
+#include <vector>
+#include <unordered_map>
+using namespace std;
+
+vector<int> twoSum(vector<int>& nums, int target) {
+    // TODO: Implement your solution
+    return {};
+}
+
+int main() {
+    int size;
+    cin >> size;
+    if (size < 2) { cout << "Invalid size"; return 1; }
+    vector<int> nums(size);
+    for (int i = 0; i < size; i++) { cin >> nums[i]; }
+    int target;
+    cin >> target;
+    vector<int> result = twoSum(nums, target);
+    if (result.size() != 2) { cout << "No solution"; return 1; }
+    cout << "[" << result[0] << "," << result[1] << "]" << endl;
+    return 0;
+}`;
+        cppEditor.setValue(templateCode);
+        console.log("Template code set for Two Sum");
+        return;
+    }
+
+    // Generic template for other problems
     let templateCode = `#include <iostream>
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <unordered_map>
 #include <iomanip>
 using namespace std;
 `;
@@ -546,6 +597,7 @@ async function runCppCode() {
         document.getElementById("result-box").textContent = "Sign in required.";
         document.getElementById("verdict-box").textContent = "Sign-in required";
         updateRunButton(false);
+        console.error("runCppCode: No user - userId:", userId, "auth.currentUser:", auth.currentUser);
         return;
     }
 
@@ -554,45 +606,55 @@ async function runCppCode() {
     await saveCodeToFirestore(code);
 
     const input = prepareTestCaseInput(activeTestCase);
+    console.log("runCppCode: Sending input to backend:", input);
     try {
         document.getElementById("result-box").textContent = "Running...";
         document.getElementById("verdict-box").textContent = "Evaluating";
 
-        console.log("runCppCode: Fetching from Render backend");
-        let response = await fetch("https://codekin-l4a6.onrender.com/run", {
+        console.log("runCppCode: Fetching https://codekin-l4a6.onrender.com/run");
+        const response = await fetch("https://codekin-l4a6.onrender.com/run", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ code, input }),
+            body: JSON.stringify({ code, input })
         });
 
         if (!response.ok) throw new Error(`HTTP error ${response.status}`);
         const result = await response.json();
         const output = result.output?.trim() || "No output";
         document.getElementById("result-box").textContent = output;
+        console.log("runCppCode: API output:", output);
 
         const verdict = checkVerdict(output, activeTestCase.outputText);
-        await saveTestCaseResult(output, verdict);
-
-        const verdictBox = document.getElementById("verdict-box");
-        verdictBox.textContent = verdict;
-        verdictBox.className = `verdict-box ${verdict === "Accepted" ? "accepted" : verdict === "Wrong Answer" ? "wrong" : "error"}`;
+        const savedTestCase = await saveTestCaseResult(output, verdict);
+        const savedStatus = await saveProblemStatus(verdict);
 
         const points = problemDifficulty === "Easy" ? 50 : problemDifficulty === "Medium" ? 100 : problemDifficulty === "Hard" ? 200 : 0;
         if (verdict === "Accepted" && points > 0 && !runningAllTests) {
+            await updateUserPoints(points);
             showSuccessModal(`You earned ${points} points!`);
         }
+
+        const verdictBox = document.getElementById("verdict-box");
+        verdictBox.textContent = savedTestCase && savedStatus ? `${verdict} (Saved)` : `${verdict} (Save failed - check permissions)`;
+        verdictBox.className = `verdict-box ${verdict === "Accepted" ? "accepted" : verdict === "Wrong Answer" ? "wrong" : "error"}`;
     } catch (error) {
+        console.error("runCppCode: Error:", error.message);
         document.getElementById("result-box").textContent = "Run failed: " + error.message;
-        document.getElementById("verdict-box").textContent = "Error";
+        document.getElementById("verdict-box").textContent = "Error (Save failed)";
         document.getElementById("verdict-box").className = "verdict-box error";
         await saveTestCaseResult(error.message, "Error");
+        await saveProblemStatus("Error");
     }
+    await showProblemStatus();
     updateRunButton(false);
 }
 
 // Run all test cases
 async function runAllTestCases() {
-    if (!testCases.length || !auth.currentUser || !userId || !problemId) return;
+    if (!testCases.length || !auth.currentUser || !userId || !problemId) {
+        console.error("runAllTestCases: Cannot run - testCases:", testCases.length, "userId:", userId, "problemId:", problemId);
+        return;
+    }
     runningAllTests = true;
     updateRunButton(true);
 
@@ -613,17 +675,18 @@ async function runAllTestCases() {
 
         try {
             const input = prepareTestCaseInput(testCase);
-            console.log("runCppCode: Fetching from Render backend");
-            let response = await fetch("https://codekin-l4a6.onrender.com/run", {
+            console.log(`runAllTestCases: Running test case ${i + 1}, input:`, input);
+            const response = await fetch("https://codekin-l4a6.onrender.com/run", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ code, input }),
+                body: JSON.stringify({ code, input })
             });
 
             if (!response.ok) throw new Error(`HTTP error ${response.status}`);
             const result = await response.json();
             const output = result.output?.trim() || "No output";
             const verdict = checkVerdict(output, testCase.outputText);
+            console.log(`runAllTestCases: Test case ${i + 1} verdict: ${verdict}, Output: ${output}, Expected: ${testCase.outputText}`);
 
             row.cells[3].textContent = output;
             const statusSpan = document.createElement("span");
@@ -633,18 +696,24 @@ async function runAllTestCases() {
             row.cells[4].appendChild(statusSpan);
 
             await saveTestCaseResult(output, verdict);
+            await saveProblemStatus(verdict);
             if (verdict !== "Accepted") allAccepted = false;
         } catch (error) {
+            console.error(`runAllTestCases: Test case ${i + 1} error:`, error.message);
             row.cells[3].textContent = error.message;
             row.cells[4].innerHTML = '<span class="status-error">Error</span>';
             allAccepted = false;
             await saveTestCaseResult(error.message, "Error");
+            await saveProblemStatus("Error");
         }
     }
 
     if (allAccepted) {
         const points = problemDifficulty === "Easy" ? 50 : problemDifficulty === "Medium" ? 100 : problemDifficulty === "Hard" ? 200 : 0;
-        if (points > 0) showSuccessModal(`All test cases passed! You earned ${points} points!`);
+        if (points > 0) {
+            await updateUserPoints(points);
+            showSuccessModal(`All test cases passed! You earned ${points} points!`);
+        }
     }
 
     activeTestCaseId = 0;
@@ -719,7 +788,7 @@ function updateRunButton(isRunning) {
 function prepareTestCaseInput(testCase) {
     if (!testCase) return "";
     const activeUserInputs = userInputValues[activeTestCaseId] || {};
-    return Object.keys(testCase)
+    const inputLines = Object.keys(testCase)
         .filter(key => key !== "id" && key !== "outputText" && key !== "rawInputText")
         .map(key => {
             const value = activeUserInputs[key] || testCase[key];
@@ -728,8 +797,10 @@ function prepareTestCaseInput(testCase) {
                 return `${elements.length}\n${elements.join("\n")}`;
             }
             return value.replace(/^"|"$/g, "");
-        })
-        .join("\n");
+        });
+    const input = inputLines.join("\n");
+    console.log("Prepared input:", input);
+    return input;
 }
 
 // Check verdict
@@ -758,8 +829,13 @@ function checkVerdict(userOutput, expectedOutput) {
 
 // Save test case result
 async function saveTestCaseResult(output, verdict) {
-    if (!userId || !problemId || !auth.currentUser || auth.currentUser.uid !== userId) return false;
+    if (!userId || !problemId || !auth.currentUser || auth.currentUser.uid !== userId) {
+        console.error("saveTestCaseResult: Cannot save - userId:", userId, "problemId:", problemId, "auth:", auth.currentUser);
+        return false;
+    }
+
     try {
+        const path = `users/${userId}/problems/${problemId}/testCases/case_${activeTestCaseId + 1}`;
         const resultDocRef = doc(db, "users", userId, "problems", problemId, "testCases", `case_${activeTestCaseId + 1}`);
         await setDoc(resultDocRef, {
             output,
@@ -767,10 +843,130 @@ async function saveTestCaseResult(output, verdict) {
             testCaseId: `case_${activeTestCaseId + 1}`,
             updatedAt: serverTimestamp()
         }, { merge: true });
-        console.log("Test case result saved");
+        console.log("saveTestCaseResult: Saved - path:", path, "verdict:", verdict);
         return true;
     } catch (error) {
-        console.error("saveTestCaseResult: Error:", error.message);
+        console.error("saveTestCaseResult: Failed - path:", path, "error:", error.message);
+        return false;
+    }
+}
+
+// Save problem status
+async function saveProblemStatus(verdict) {
+    if (!userId || !problemId || !auth.currentUser || auth.currentUser.uid !== userId) {
+        console.error("saveProblemStatus: Cannot save - userId:", userId, "problemId:", problemId, "auth:", auth.currentUser);
+        return false;
+    }
+
+    try {
+        const status = verdict === "Accepted" ? "Accepted" : "Attempted";
+        const data = {
+            problemId,
+            status,
+            verdict,
+            difficulty: problemDifficulty,
+            timestamp: serverTimestamp(),
+            updatedAt: serverTimestamp()
+        };
+        console.log("saveProblemStatus: Attempting save - uid:", auth.currentUser.uid, "data:", data);
+
+        const progressPath = `users/${userId}/progress/${problemId}`;
+        const progressDocRef = doc(db, "users", userId, "progress", problemId);
+        await setDoc(progressDocRef, data, { merge: true });
+        console.log("saveProblemStatus: Saved - path:", progressPath, "status:", status, "verdict:", verdict, "difficulty:", problemDifficulty);
+
+        const submissionsPath = `users/${userId}/submissions/${problemId}`;
+        const submissionsDocRef = doc(db, "users", userId, "submissions", problemId);
+        await setDoc(submissionsDocRef, data, { merge: true });
+        console.log("saveProblemStatus: Saved - path:", submissionsPath, "status:", status, "verdict:", verdict, "difficulty:", problemDifficulty);
+
+        return true;
+    } catch (error) {
+        console.error("saveProblemStatus: Failed - progress path:", progressPath, ", submissions path:", submissionsPath, ", error:", error.message);
+        return false;
+    }
+}
+
+// Show problem status
+async function showProblemStatus() {
+    const statusBox = document.getElementById("status-box") || createStatusBox();
+    if (!userId || !problemId || !auth.currentUser) {
+        statusBox.textContent = "Status: Sign in to view";
+        console.log("showProblemStatus: No userId, problemId, or auth - userId:", userId, "auth:", auth.currentUser);
+        return;
+    }
+
+    try {
+        const path = `users/${userId}/progress/${problemId}`;
+        const statusDocRef = doc(db, "users", userId, "progress", problemId);
+        console.log("showProblemStatus: Fetching - path:", path);
+
+        const timeoutPromise = new Promise((_, reject) => {
+            setTimeout(() => reject(new Error("getDoc timeout")), 5000);
+        });
+        const statusDoc = await Promise.race([getDoc(statusDocRef), timeoutPromise]);
+
+        console.log("showProblemStatus: Doc exists:", statusDoc.exists(), "Data:", statusDoc.data());
+        if (statusDoc.exists()) {
+            const data = statusDoc.data();
+            const displayStatus = data.status === "Accepted" ? "Solved" : data.status === "Attempted" ? "Attempted" : "To-Do";
+            const emoji = statusMap[displayStatus] || "❌";
+            statusBox.textContent = `Status: ${displayStatus} ${emoji}`;
+            console.log("showProblemStatus: Loaded - path:", path, "displayStatus:", displayStatus, "emoji:", emoji);
+        } else {
+            statusBox.textContent = `Status: To-Do ${statusMap["To-Do"]}`;
+            console.log("showProblemStatus: No status - path:", path);
+        }
+    } catch (error) {
+        console.error("showProblemStatus: Failed - path:", path, "error:", error.message, "code:", error.code);
+        statusBox.textContent = `Status: Error loading - ${error.message}`;
+    }
+}
+
+// Create status box
+function createStatusBox() {
+    const container = document.createElement("div");
+    container.style.margin = "10px";
+    container.style.padding = "10px";
+    container.style.border = "1px solid #ccc";
+
+    const statusBox = document.createElement("div");
+    statusBox.id = "status-box";
+    statusBox.textContent = "Status: Loading...";
+    container.appendChild(statusBox);
+
+    const checkButton = document.createElement("button");
+    checkButton.textContent = "Check Status";
+    checkButton.style.marginTop = "5px";
+    let isChecking = false;
+    checkButton.onclick = async () => {
+        if (isChecking) return;
+        isChecking = true;
+        statusBox.textContent = "Status: Refreshing...";
+        await showProblemStatus();
+        isChecking = false;
+    };
+    container.appendChild(checkButton);
+
+    document.getElementById("split-0").appendChild(container);
+    return statusBox;
+}
+
+// Update user points
+async function updateUserPoints(points) {
+    if (!userId || !auth.currentUser || auth.currentUser.uid !== userId) {
+        console.error("updateUserPoints: Cannot save - userId:", userId, "auth:", auth.currentUser);
+        return false;
+    }
+
+    try {
+        const path = `users/${userId}`;
+        const userRef = doc(db, "users", userId);
+        await setDoc(userRef, { points: increment(points) }, { merge: true });
+        console.log("updateUserPoints: Added points:", points, "path:", path);
+        return true;
+    } catch (error) {
+        console.error("updateUserPoints: Failed - path:", path, "error:", error.message);
         return false;
     }
 }
@@ -832,8 +1028,10 @@ fetch("problems.json")
         }
 
         renderTestCases();
-        generateTemplateCode();
-        if (userId) loadCodeFromFirestore();
+        if (userId) {
+            loadCodeFromFirestore();
+            showProblemStatus();
+        }
     })
     .catch(error => {
         console.error("Failed to load problems:", error.message);
@@ -845,6 +1043,7 @@ auth.onAuthStateChanged(user => {
     console.log("Auth state changed, userId:", userId);
     if (userId && problemId) {
         loadCodeFromFirestore();
+        showProblemStatus();
     }
 });
 
