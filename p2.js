@@ -558,11 +558,11 @@ async function runCppCode() {
         document.getElementById("result-box").textContent = "Running...";
         document.getElementById("verdict-box").textContent = "Evaluating";
 
-        console.log("runCppCode: Fetching http://localhost:5000/run");
-        const response = await fetch("http://localhost:5000/run", {
+        console.log("runCppCode: Fetching from Render backend");
+        let response = await fetch("https://codekin-l4a6.onrender.com/run", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ code, input })
+            body: JSON.stringify({ code, input }),
         });
 
         if (!response.ok) throw new Error(`HTTP error ${response.status}`);
@@ -613,11 +613,11 @@ async function runAllTestCases() {
 
         try {
             const input = prepareTestCaseInput(testCase);
-            console.log("runAllTestCases: Fetching http://localhost:5000/run");
-            const response = await fetch("http://localhost:5000/run", {
+            console.log("runCppCode: Fetching from Render backend");
+            let response = await fetch("https://codekin-l4a6.onrender.com/run", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ code, input })
+                body: JSON.stringify({ code, input }),
             });
 
             if (!response.ok) throw new Error(`HTTP error ${response.status}`);
