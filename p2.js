@@ -864,7 +864,8 @@ async function saveProblemStatus(verdict) {
             status,
             verdict,
             difficulty: problemDifficulty,
-            timestamp: serverTimestamp()
+            timestamp: serverTimestamp(), // For profile.js activity map
+            updatedAt: serverTimestamp()  // To satisfy Firestore rules
         };
         console.log("saveProblemStatus: Attempting save - uid:", auth.currentUser.uid, "data:", data);
 
