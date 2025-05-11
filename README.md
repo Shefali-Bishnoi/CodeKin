@@ -45,7 +45,8 @@ Check It Out at  **[CodeKin](https://shefali-bishnoi.github.io/CodeKin/)**
 ## Tools and Technology
 
 - *Editor:* [CodeMirror](https://codemirror.net/)
-- *Compiler:* [JDoodle](https://www.jdoodle.com/)
+- *Compiler:* [JDoodle](https://www.jdoodle.com/) API
+- *Problems Dataset:* Problems are used from this [dataset](https://www.kaggle.com/datasets/gzipchrist/leetcode-problem-dataset?resource=download) 
 - *HTML:* standard markup language for creating web pages
 - *CSS:* style sheet language
 - *JavaScript:* programming language that gives web pages interactive elements
@@ -59,8 +60,9 @@ Check It Out at  **[CodeKin](https://shefali-bishnoi.github.io/CodeKin/)**
 The *CodeKin* platform utilizes an external API to dynamically fetch problems for users. This API ensures a wide range of coding challenges that are updated regularly, giving users fresh content to engage with. The API serves as the backend for problem feeds and helps manage and retrieve challenge data seamlessly.
 It includes some limited fetches per day as well. 
 
-- *Problem Feed:* All problems are pulled from an API, which ensures that the list of available challenges is up-to-date.
-- *Efficient Handling:* The API is optimized for fast problem fetching, ensuring a smooth user experience even during high-traffic periods.
+- *Problem Feed:* All problems are pulled from a [dataset](https://www.kaggle.com/datasets/gzipchrist/leetcode-problem-dataset?resource=download), which ensures that the list of available challenges is up-to-date.
+  This website uses 1825 problems from the dataset.
+- *Efficient Handling:* The JDoodle API is optimized for fast problem fetching, ensuring a smooth user experience even during high-traffic periods.
 - *Error States:* The platform handles loading errors gracefully, providing users with relevant feedback if the API is unavailable.
 
 The integration of the API enables CodeKin to offer real-time, dynamic problem-solving experiences while keeping the platform scalable and adaptable to user needs.
