@@ -6,7 +6,7 @@
 
 ## 📋 Table of Contents
 
-- [Introduction](#introduction)
+- [Introduction](#📌introduction)
 - [Features](#features)
 - [Live Demo](#live-demo)
 - [Tools and Technology](#tools-and-technology)
@@ -16,7 +16,7 @@
 
 ---
 
-## Introduction
+## 📌 Introduction
 
 CodeKin is a user-friendly online coding platform designed to help learners and developers improve their programming skills through daily problem-solving and real-time rankings. It offers a variety of challenges, categorized by difficulty, and tracks user performance via global and university-based leaderboards. CodeKin is built to support consistent learning, competitive coding, and community-driven improvement—all in one place.
 
